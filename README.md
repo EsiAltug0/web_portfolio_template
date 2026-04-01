@@ -49,3 +49,4 @@ Daha fazla bilgi almak veya iletişime geçmek için benimle bağlantı kurabili
 
 Bu portfolyo sürekli güncellenmektedir. Yeni projeler ve geliştirmeler zamanla eklenecektir.
 güncellendi.
+güncellendi-2.
