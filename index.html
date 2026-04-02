@@ -24,6 +24,7 @@
             <!-- Desktop menu -->
             <div class="nav-menu" id="navMenu">
                 <button class="nav-link" onclick="goToPage('home')">ANA SAYFA</button>
+                <button class="nav-link" onclick="goToPage('about')">HAKKIMDA</button>
                 <button class="nav-link" onclick="goToPage('skills')">BECERİLER</button>
                 <button class="nav-link" onclick="goToPage('projects')">PROJELER</button>
                 <button class="nav-link" onclick="goToPage('contact')">İLETİŞİM</button>
@@ -47,6 +48,7 @@
         <!-- Mobile menu -->
         <div class="mobile-menu" id="mobileMenu">
             <button class="nav-link" onclick="goToPage('home')">ANA SAYFA</button>
+            <button class="nav-link" onclick="goToPage('about')">HAKKIMDA</button>
             <button class="nav-link" onclick="goToPage('skills')">BECERİLER</button>
             <button class="nav-link" onclick="goToPage('projects')">PROJELER</button>
             <button class="nav-link" onclick="goToPage('contact')">İLETİŞİM</button>
@@ -79,6 +81,10 @@
                         </div>
 
                         <nav class="hero-menu">
+                            <button class="hero-menu-item" onclick="goToPage('about')">
+                                <span class="menu-line"></span>
+                                <span class="menu-text">HAKKIMDA</span>
+                            </button>
                             <button class="hero-menu-item" onclick="goToPage('skills')">
                                 <span class="menu-line"></span>
                                 <span class="menu-text">BECERİLER</span>
@@ -90,10 +96,6 @@
                             <button class="hero-menu-item" onclick="goToPage('contact')">
                                 <span class="menu-line"></span>
                                 <span class="menu-text">İLETİŞİM</span>
-                            </button>
-                            <button class="hero-menu-item" onclick="goToPage('form')">
-                                <span class="menu-line"></span>
-                                <span class="menu-text">FORM</span>
                             </button>
                         </nav>
                     </div>
@@ -126,46 +128,67 @@
                         <span class="section-number">01</span>
                         <div class="section-divider"></div>
                     </div>
-                    <h2 class="section-title">HAKKIMDA</h2>
 
-                    <div class="about-grid">
-                        <div class="about-left">
-                            <div class="profile-card">
-                                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663414524144/sYkejvaCCHzueiFx.jpg" alt="Profil">
-                                <div class="profile-overlay"></div>
-                                <div class="profile-info">
-                                    <p class="profile-label">MERHABA, BEN</p>
-                                    <h3 class="profile-name">ESMA</h3>
-                                </div>
-                            </div>
-                            <div class="corner-accent corner-tl"></div>
-                            <div class="corner-accent corner-br"></div>
-                        </div>
-
-                        <div class="about-right">
-                            <div class="about-card">
-                                <h3 class="about-card-title">ABOUT ME</h3>
-                                <p>Kırşehir Ahi Evran Üniversitesi Bilgisayar Programcılığı bölümünde öğrenim görüyorum. Tasarım ve teknoloji alanında kendimi geliştirmeye odaklanıyorum.</p>
-                                <p>Adobe Photoshop, Adobe Animate ve Canva gibi tasarım araçlarını kullanarak logo, sosyal medya görselleri ve dijital içerikler üretebiliyorum.</p>
-                            </div>
-
-                            <div class="info-cards">
-                                <div class="info-card">
-                                    <p class="info-label">ÜNİVERSİTE</p>
-                                    <p class="info-value">Kırşehir Ahi Evran</p>
-                                </div>
-                                <div class="info-card">
-                                    <p class="info-label">ODAK</p>
-                                    <p class="info-value">Tasarım & Yazılım</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </section>
         </section>
 
         <!-- PAGE 2: SKILLS -->
+        <!-- Page: About -->
+        <section id="page-about" class="page">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-number">01</span>
+                    <div class="section-divider"></div>
+                </div>
+                <h2 class="section-title">HAKKIMDA</h2>
+
+                <div class="about-grid">
+                    <div class="profile-card">
+                        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663414524144/sYkejvaCCHzueiFx.jpg" alt="Profil">
+                        <div class="profile-overlay"></div>
+                        <div class="corner-accent corner-tl"></div>
+                        <div class="corner-accent corner-br"></div>
+                        <div class="profile-info">
+                            <p class="profile-label">MERHABA, BEN</p>
+                            <h3 class="profile-name">ESMA</h3>
+                        </div>
+                    </div>
+
+                    <div class="about-right">
+                        <div class="about-card">
+                            <h3 class="about-card-title">KİŞİSEL BİLGİLER</h3>
+                            <p>Kırşehir Ahi Evran Üniversitesi Bilgisayar Programcılığı bölümünde öğrenim görüyorum. Tasarım ve teknoloji alanında kendimi geliştirmeye odaklanıyorum.</p>
+                            <p>Adobe Photoshop, Adobe Animate ve Canva gibi tasarım araçlarını kullanarak logo, sosyal medya görselleri ve dijital içerikler üretebiliyorum. Görsel tasarımın yanında yazılım alanında da temel bilgiye sahibim ve bu iki alanı birleştirerek yaratıcı projeler üretmeyi hedefliyorum.</p>
+                        </div>
+
+                        <div class="about-card">
+                            <h3 class="about-card-title">KİŞİLİK ÖZELLİKLERİ</h3>
+                            <p>Öğrenmeye açık, detaylara önem veren ve üretmeyi seven biriyim. Amacım hem yazılım hem de dijital tasarım alanında kendimi geliştirerek profesyonel projelerde yer almak.</p>
+                            <div class="info-cards">
+                                <div class="info-card">
+                                    <p class="info-label">ŞEHİR</p>
+                                    <p class="info-value">Kırşehir</p>
+                                    <p class="info-sub">Türkiye</p>
+                                </div>
+                                <div class="info-card">
+                                    <p class="info-label">DURUM</p>
+                                    <p class="info-value">Aktif</p>
+                                    <p class="info-sub">Proje Arayışında</p>
+                                </div>
+                                <div class="info-card">
+                                    <p class="info-label">DENEYIM</p>
+                                    <p class="info-value">2+ Yıl</p>
+                                    <p class="info-sub">Tasarım & Web</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page: Skills -->
         <section id="page-skills" class="page">
             <div class="section-container">
                 <div class="section-header">
@@ -476,7 +499,7 @@
                 <h2 class="section-title">İSTEK / ŞİKAYET / MEKTUP</h2>
 
                 <div class="form-container">
-                    <form id="contactForm" class="contact-form" action="https://formspree.io/f/https://formspree.io/f/xreoagay" method="POST">
+                    <form id="contactForm" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                         <div class="form-group">
                             <label for="name">Adınız *</label>
                             <input type="text" id="name" name="name" required placeholder="Adınızı giriniz">
