@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assests/css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Scanline overlay -->
@@ -17,22 +17,23 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-container">
-            <button class="navbar-logo" onclick="scrollToSection('hero')">
+            <button class="navbar-logo" onclick="goToPage('home')">
                 E<span class="logo-dot">.</span>
             </button>
 
             <!-- Desktop menu -->
             <div class="nav-menu" id="navMenu">
-                <button class="nav-link" onclick="scrollToSection('about')">HAKKIMDA</button>
-                <button class="nav-link" onclick="scrollToSection('skills')">BECERİLER</button>
-                <button class="nav-link" onclick="scrollToSection('projects')">PROJELER</button>
-                <button class="nav-link" onclick="scrollToSection('contact')">İLETİŞİM</button>
+                <button class="nav-link" onclick="goToPage('home')">ANA SAYFA</button>
+                <button class="nav-link" onclick="goToPage('skills')">BECERİLER</button>
+                <button class="nav-link" onclick="goToPage('projects')">PROJELER</button>
+                <button class="nav-link" onclick="goToPage('contact')">İLETİŞİM</button>
+                <button class="nav-link" onclick="goToPage('form')">FORM</button>
             </div>
 
             <!-- Year badge -->
             <div class="year-badge">
                 <span class="pulse-dot"></span>
-                2025
+                2026
             </div>
 
             <!-- Mobile menu button -->
@@ -45,156 +46,127 @@
 
         <!-- Mobile menu -->
         <div class="mobile-menu" id="mobileMenu">
-            <button class="nav-link" onclick="scrollToSection('about')">HAKKIMDA</button>
-            <button class="nav-link" onclick="scrollToSection('skills')">BECERİLER</button>
-            <button class="nav-link" onclick="scrollToSection('projects')">PROJELER</button>
-            <button class="nav-link" onclick="scrollToSection('contact')">İLETİŞİM</button>
+            <button class="nav-link" onclick="goToPage('home')">ANA SAYFA</button>
+            <button class="nav-link" onclick="goToPage('skills')">BECERİLER</button>
+            <button class="nav-link" onclick="goToPage('projects')">PROJELER</button>
+            <button class="nav-link" onclick="goToPage('contact')">İLETİŞİM</button>
+            <button class="nav-link" onclick="goToPage('form')">FORM</button>
         </div>
     </nav>
 
-    <!-- Main content -->
-    <main>
-        <!-- Hero Section -->
-        <section id="hero" class="hero-section">
-            <div class="hero-bg"></div>
-            <div class="hero-overlay"></div>
-            <div class="hero-grid"></div>
-            
-            <div class="hero-content">
-                <div class="hero-left">
-                    <!-- Year tag -->
-                    <div class="hero-tag animate-fade-in-up">
-                        <span class="tag-text">PORTFOLIO 2026</span>
-                        <div class="tag-line"></div>
-                    </div>
-
-                    <!-- Main title -->
-                    <h1 class="hero-title glitch-text" data-text="PORTFOLIO" style="animation-delay: 0.1s;">
-                        PORTFOLIO
-                    </h1>
-
-                    <!-- Name -->
-                    <h2 class="hero-name" style="animation-delay: 0.2s;">ESMA</h2>
-
-                    <!-- Role -->
-                    <div class="hero-role" style="animation-delay: 0.3s;">
-                        <span class="role-dot"></span>
-                        <span>Tasarım & Yazılım Geliştirici</span>
-                    </div>
-
-                    <!-- Menu items -->
-                    <nav class="hero-menu" style="animation-delay: 0.4s;">
-                        <button class="hero-menu-item" onclick="scrollToSection('about')">
-                            <span class="menu-line"></span>
-                            <span class="menu-text">HAKKIMDA</span>
-                        </button>
-                        <button class="hero-menu-item" onclick="scrollToSection('skills')">
-                            <span class="menu-line"></span>
-                            <span class="menu-text">BECERİLER</span>
-                        </button>
-                        <button class="hero-menu-item" onclick="scrollToSection('projects')">
-                            <span class="menu-line"></span>
-                            <span class="menu-text">PROJELER</span>
-                        </button>
-                        <button class="hero-menu-item" onclick="scrollToSection('contact')">
-                            <span class="menu-line"></span>
-                            <span class="menu-text">İLETİŞİM</span>
-                        </button>
-                    </nav>
-                </div>
-
-                <!-- Right: Decorative element -->
-                <div class="hero-right" style="animation-delay: 0.5s;">
-                    <div class="rotating-rings">
-                        <div class="ring ring-1"></div>
-                        <div class="ring ring-2"></div>
-                        <div class="center-circle">
-                            <span>E</span>
+    <!-- Pages Container -->
+    <main class="pages-container">
+        <!-- PAGE 1: HOME -->
+        <section id="page-home" class="page active">
+            <div class="hero-section">
+                <div class="hero-bg"></div>
+                <div class="hero-overlay"></div>
+                <div class="hero-grid"></div>
+                
+                <div class="hero-content">
+                    <div class="hero-left">
+                        <div class="hero-tag animate-fade-in-up">
+                            <span class="tag-text">PORTFOLIO 2026</span>
+                            <div class="tag-line"></div>
                         </div>
-                        <div class="floating-dot dot-1"></div>
-                        <div class="floating-dot dot-2"></div>
-                        <div class="floating-dot dot-3"></div>
-                        <div class="floating-dot dot-4"></div>
-                        <div class="floating-dot dot-5"></div>
-                        <div class="floating-dot dot-6"></div>
+
+                        <h1 class="hero-title glitch-text" data-text="PORTFOLIO">PORTFOLIO</h1>
+                        <h2 class="hero-name">ESMA</h2>
+
+                        <div class="hero-role">
+                            <span class="role-dot"></span>
+                            <span>Tasarım & Yazılım Geliştirici</span>
+                        </div>
+
+                        <nav class="hero-menu">
+                            <button class="hero-menu-item" onclick="goToPage('skills')">
+                                <span class="menu-line"></span>
+                                <span class="menu-text">BECERİLER</span>
+                            </button>
+                            <button class="hero-menu-item" onclick="goToPage('projects')">
+                                <span class="menu-line"></span>
+                                <span class="menu-text">PROJELER</span>
+                            </button>
+                            <button class="hero-menu-item" onclick="goToPage('contact')">
+                                <span class="menu-line"></span>
+                                <span class="menu-text">İLETİŞİM</span>
+                            </button>
+                            <button class="hero-menu-item" onclick="goToPage('form')">
+                                <span class="menu-line"></span>
+                                <span class="menu-text">FORM</span>
+                            </button>
+                        </nav>
                     </div>
+
+                    <div class="hero-right">
+                        <div class="rotating-rings">
+                            <div class="ring ring-1"></div>
+                            <div class="ring ring-2"></div>
+                            <div class="center-circle"><span>E</span></div>
+                            <div class="floating-dot dot-1"></div>
+                            <div class="floating-dot dot-2"></div>
+                            <div class="floating-dot dot-3"></div>
+                            <div class="floating-dot dot-4"></div>
+                            <div class="floating-dot dot-5"></div>
+                            <div class="floating-dot dot-6"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scroll-indicator">
+                    <span>SCROLL</span>
+                    <div class="scroll-line"></div>
                 </div>
             </div>
 
-            <!-- Scroll indicator -->
-            <div class="scroll-indicator" style="animation-delay: 0.7s;">
-                <span>SCROLL</span>
-                <div class="scroll-line"></div>
-            </div>
+            <!-- About Section on Home Page -->
+            <section class="about-section">
+                <div class="section-container">
+                    <div class="section-header">
+                        <span class="section-number">01</span>
+                        <div class="section-divider"></div>
+                    </div>
+                    <h2 class="section-title">HAKKIMDA</h2>
+
+                    <div class="about-grid">
+                        <div class="about-left">
+                            <div class="profile-card">
+                                <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663414524144/sYkejvaCCHzueiFx.jpg" alt="Profil">
+                                <div class="profile-overlay"></div>
+                                <div class="profile-info">
+                                    <p class="profile-label">MERHABA, BEN</p>
+                                    <h3 class="profile-name">ESMA</h3>
+                                </div>
+                            </div>
+                            <div class="corner-accent corner-tl"></div>
+                            <div class="corner-accent corner-br"></div>
+                        </div>
+
+                        <div class="about-right">
+                            <div class="about-card">
+                                <h3 class="about-card-title">ABOUT ME</h3>
+                                <p>Kırşehir Ahi Evran Üniversitesi Bilgisayar Programcılığı bölümünde öğrenim görüyorum. Tasarım ve teknoloji alanında kendimi geliştirmeye odaklanıyorum.</p>
+                                <p>Adobe Photoshop, Adobe Animate ve Canva gibi tasarım araçlarını kullanarak logo, sosyal medya görselleri ve dijital içerikler üretebiliyorum.</p>
+                            </div>
+
+                            <div class="info-cards">
+                                <div class="info-card">
+                                    <p class="info-label">ÜNİVERSİTE</p>
+                                    <p class="info-value">Kırşehir Ahi Evran</p>
+                                </div>
+                                <div class="info-card">
+                                    <p class="info-label">ODAK</p>
+                                    <p class="info-value">Tasarım & Yazılım</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="about-section">
-            <div class="section-container">
-                <div class="section-header">
-                    <span class="section-number">01</span>
-                    <div class="section-divider"></div>
-                </div>
-                <h2 class="section-title">HAKKIMDA</h2>
-
-                <div class="about-grid">
-                    <!-- Left: Profile -->
-                    <div class="about-left">
-                        <div class="profile-card">
-                            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663414524144/sYkejvaCCHzueiFx.jpg" alt="Profil">
-                            <div class="profile-overlay"></div>
-                            <div class="profile-info">
-                                <p class="profile-label">MERHABA, BEN</p>
-                                <h3 class="profile-name">ESİ</h3>
-                            </div>
-                        </div>
-                        <div class="corner-accent corner-tl"></div>
-                        <div class="corner-accent corner-br"></div>
-                    </div>
-
-                    <!-- Right: Content -->
-                    <div class="about-right">
-                        <div class="about-card">
-                            <h3 class="about-card-title">ABOUT ME</h3>
-                            <p>Kırşehir Ahi Evran Üniversitesi Bilgisayar Programcılığı bölümünde öğrenim görüyorum. Tasarım ve teknoloji alanında kendimi geliştirmeye odaklanıyorum.</p>
-                            <p>Adobe Photoshop, Adobe Animate ve Canva gibi tasarım araçlarını kullanarak logo, sosyal medya görselleri ve dijital içerikler üretebiliyorum. Görsel tasarımın yanında yazılım alanında da temel bilgiye sahibim.</p>
-                            <p>Öğrenmeye açık, detaylara önem veren ve üretmeyi seven biriyim. Amacım hem yazılım hem de dijital tasarım alanında kendimi geliştirerek profesyonel projelerde yer almak.</p>
-                        </div>
-
-                        <!-- Info cards -->
-                        <div class="info-cards">
-                            <div class="info-card">
-                                <p class="info-label">ÜNİVERSİTE</p>
-                                <p class="info-value">Kırşehir Ahi Evran Üniversitesi</p>
-                                <p class="info-sub">Bilgisayar Programcılığı</p>
-                            </div>
-                            <div class="info-card">
-                                <p class="info-label">ODAK ALANLARI</p>
-                                <p class="info-value">Tasarım & Yazılım</p>
-                                <p class="info-sub">Dijital İçerik Üretimi</p>
-                            </div>
-                            <div class="info-card">
-                                <p class="info-label">HEDEF</p>
-                                <p class="info-value">Profesyonel Projeler</p>
-                                <p class="info-sub">Yazılım + Dijital Tasarım</p>
-                            </div>
-                        </div>
-
-                        <!-- Tags -->
-                        <div class="tags">
-                            <span class="tag">Öğrenmeye Açık</span>
-                            <span class="tag">Detaycı</span>
-                            <span class="tag">Üretken</span>
-                            <span class="tag">Yaratıcı</span>
-                            <span class="tag">Teknoloji Meraklısı</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="skills-section">
+        <!-- PAGE 2: SKILLS -->
+        <section id="page-skills" class="page">
             <div class="section-container">
                 <div class="section-header">
                     <span class="section-number">02</span>
@@ -226,7 +198,7 @@
                                     <span>80%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-bar-fill" style="width: 80%; --bar-color: #31A8FF;"></div>
+                                    <div class="skill-bar-fill" style="width: 0%; --bar-color: #31A8FF;" data-width="80"></div>
                                 </div>
                             </div>
                             <div class="skill-bar-item">
@@ -235,7 +207,7 @@
                                     <span>70%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-bar-fill" style="width: 70%; --bar-color: #FF7C00;"></div>
+                                    <div class="skill-bar-fill" style="width: 0%; --bar-color: #FF7C00;" data-width="70"></div>
                                 </div>
                             </div>
                             <div class="skill-bar-item">
@@ -244,7 +216,7 @@
                                     <span>90%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-bar-fill" style="width: 90%; --bar-color: #00C4CC;"></div>
+                                    <div class="skill-bar-fill" style="width: 0%; --bar-color: #00C4CC;" data-width="90"></div>
                                 </div>
                             </div>
                         </div>
@@ -261,7 +233,7 @@
                                     <span>75%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-bar-fill" style="width: 75%;"></div>
+                                    <div class="skill-bar-fill" style="width: 0%;" data-width="75"></div>
                                 </div>
                             </div>
                             <div class="skill-bar-item">
@@ -270,7 +242,7 @@
                                     <span>55%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-bar-fill" style="width: 55%;"></div>
+                                    <div class="skill-bar-fill" style="width: 0%;" data-width="55"></div>
                                 </div>
                             </div>
                             <div class="skill-bar-item">
@@ -279,16 +251,7 @@
                                     <span>50%</span>
                                 </div>
                                 <div class="skill-bar">
-                                    <div class="skill-bar-fill" style="width: 50%;"></div>
-                                </div>
-                            </div>
-                            <div class="skill-bar-item">
-                                <div class="skill-bar-header">
-                                    <span>Responsive Tasarım</span>
-                                    <span>70%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-bar-fill" style="width: 70%;"></div>
+                                    <div class="skill-bar-fill" style="width: 0%;" data-width="50"></div>
                                 </div>
                             </div>
                         </div>
@@ -302,7 +265,7 @@
                                         <span>100%</span>
                                     </div>
                                     <div class="skill-bar">
-                                        <div class="skill-bar-fill" style="width: 100%;"></div>
+                                        <div class="skill-bar-fill" style="width: 0%;" data-width="100"></div>
                                     </div>
                                 </div>
                                 <div class="skill-bar-item">
@@ -311,14 +274,14 @@
                                         <span>45%</span>
                                     </div>
                                     <div class="skill-bar">
-                                        <div class="skill-bar-fill" style="width: 45%;"></div>
+                                        <div class="skill-bar-fill" style="width: 0%;" data-width="45"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Education & Focus -->
+                    <!-- Education -->
                     <div class="skill-card">
                         <div class="education-card">
                             <h3 class="skill-card-title cyan">EĞİTİM</h3>
@@ -339,20 +302,16 @@
                                 <li>Sosyal Medya Görselleri</li>
                                 <li>Dijital İçerik Üretimi</li>
                                 <li>Animasyon & Motion</li>
-                                <li>Web Geliştirme Temelleri</li>
+                                <li>Web Geliştirme</li>
                             </ul>
-                        </div>
-
-                        <div class="goal-card">
-                            <p>// HEDEF: Yazılım ve dijital tasarım alanında profesyonel projelerde yer almak</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="projects-section">
+        <!-- PAGE 3: PROJECTS -->
+        <section id="page-projects" class="page">
             <div class="section-container">
                 <div class="section-header">
                     <span class="section-number">03</span>
@@ -360,9 +319,8 @@
                 </div>
                 <div class="projects-header">
                     <h2 class="section-title">PROJELER</h2>
-                    <span class="projects-year">2025</span>
+                    <span class="projects-year">2026</span>
                 </div>
-                <p class="projects-desc">Tasarım araçları kullanılarak üretilen dijital içerik ve tasarım çalışmaları.</p>
 
                 <div class="projects-grid">
                     <div class="project-card" style="grid-column: span 1; grid-row: span 1;">
@@ -411,7 +369,6 @@
                             <div class="project-info">
                                 <div class="project-tools">
                                     <span class="tool-badge">Photoshop</span>
-                                    <span class="tool-badge">Canva</span>
                                 </div>
                                 <h4>Marka Kimliği</h4>
                                 <p>Branding</p>
@@ -445,13 +402,11 @@
                         </div>
                     </div>
                 </div>
-
-                <p class="projects-note">// Projeler güncellenmekte — daha fazlası yakında</p>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact-section">
+        <!-- PAGE 4: CONTACT -->
+        <section id="page-contact" class="page">
             <div class="section-container">
                 <div class="section-header">
                     <span class="section-number">04</span>
@@ -460,7 +415,6 @@
                 <h2 class="section-title">İLETİŞİM</h2>
 
                 <div class="contact-grid">
-                    <!-- Left: Social links -->
                     <div class="contact-left">
                         <h3 class="contact-subtitle">BANA ULAŞIN</h3>
                         
@@ -468,7 +422,7 @@
                             <div class="social-icon" style="--social-color: #E1306C;">IG</div>
                             <div class="social-info">
                                 <p class="social-platform">Instagram</p>
-                                <p class="social-handle">@esmaaltug0</p>
+                                <p class="social-handle">@esma</p>
                             </div>
                             <span class="social-arrow">→</span>
                         </a>
@@ -486,7 +440,7 @@
                             <div class="social-icon" style="--social-color: #ffffff;">GH</div>
                             <div class="social-info">
                                 <p class="social-platform">GitHub</p>
-                                <p class="social-handle">@EsiAltug0</p>
+                                <p class="social-handle">@esma</p>
                             </div>
                             <span class="social-arrow">→</span>
                         </a>
@@ -495,35 +449,106 @@
                             <div class="social-icon" style="--social-color: #00d4ff;">@</div>
                             <div class="social-info">
                                 <p class="social-platform">E-Posta</p>
-                                <p class="social-handle">esmaaltuge1@gmail.com</p>
+                                <p class="social-handle">esma@email.com</p>
                             </div>
                             <span class="social-arrow">→</span>
                         </a>
                     </div>
 
-                    <!-- Right: Thank you -->
                     <div class="contact-right">
                         <p class="thank-you-label">// teşekkürler</p>
                         <h2 class="thank-you-text">TEŞEKKÜR</h2>
                         <h2 class="thank-you-year">2026</h2>
-                        <p class="thank-you-message">Portfolyomu ziyaret ettiğiniz için teşekkür ederim.<br>Birlikte çalışmak için iletişime geçebilirsiniz.</p>
+                        <p class="thank-you-message">Portfolyomu ziyaret ettiğiniz için teşekkür ederim.</p>
                         <div class="thank-you-line"></div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Footer -->
-                <footer class="footer">
-                    <span class="footer-logo">E<span class="logo-dot">.</span></span>
-                    <p class="footer-text">© 2026 Esma — Tüm hakları saklıdır</p>
-                    <div class="footer-location">
-                        <span class="location-dot"></span>
-                        <span>Kırşehir, TR</span>
+        <!-- PAGE 5: FORM -->
+        <section id="page-form" class="page">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-number">05</span>
+                    <div class="section-divider"></div>
+                </div>
+                <h2 class="section-title">İSTEK / ŞİKAYET / MEKTUP</h2>
+
+                <div class="form-container">
+                    <form id="contactForm" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                        <div class="form-group">
+                            <label for="name">Adınız *</label>
+                            <input type="text" id="name" name="name" required placeholder="Adınızı giriniz">
+                            <span class="error-message" id="nameError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-Posta Adresiniz *</label>
+                            <input type="email" id="email" name="email" required placeholder="E-posta adresinizi giriniz">
+                            <span class="error-message" id="emailError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Telefon Numaranız</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Telefon numaranızı giriniz">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="type">İçerik Türü *</label>
+                            <select id="type" name="type" required>
+                                <option value="">Seçiniz</option>
+                                <option value="istek">İstek</option>
+                                <option value="sikayet">Şikayet</option>
+                                <option value="mektup">Mektup</option>
+                                <option value="diger">Diğer</option>
+                            </select>
+                            <span class="error-message" id="typeError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Konu *</label>
+                            <input type="text" id="subject" name="subject" required placeholder="Konuyu giriniz">
+                            <span class="error-message" id="subjectError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Mesajınız *</label>
+                            <textarea id="message" name="message" required placeholder="Mesajınızı giriniz" rows="8"></textarea>
+                            <span class="error-message" id="messageError"></span>
+                        </div>
+
+                        <div class="form-group checkbox">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">Verilerimin işlenmesine izin veriyorum *</label>
+                            <span class="error-message" id="termsError"></span>
+                        </div>
+
+                        <button type="submit" class="submit-btn">GÖNDER</button>
+                        <p class="form-note">// Formunuz başarıyla gönderilecek</p>
+                    </form>
+
+                    <div id="successMessage" class="success-message" style="display: none;">
+                        <div class="success-icon">✓</div>
+                        <h3>Mesaj Başarıyla Gönderildi!</h3>
+                        <p>Mesajınız için teşekkür ederiz. En kısa sürede size dönüş yapacağız.</p>
+                        <button onclick="goToPage('home')" class="btn-home">Ana Sayfaya Dön</button>
                     </div>
-                </footer>
+                </div>
             </div>
         </section>
     </main>
 
-    <script src="assests/js/script.js"></script>
+    <!-- Footer -->
+    <footer class="footer">
+        <span class="footer-logo">E<span class="logo-dot">.</span></span>
+        <p class="footer-text">© 2026 Esma — Tüm hakları saklıdır</p>
+        <div class="footer-location">
+            <span class="location-dot"></span>
+            <span>Kırşehir, TR</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
