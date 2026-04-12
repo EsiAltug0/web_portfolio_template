@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assests/css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Scanline overlay -->
@@ -17,18 +17,18 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-container">
-            <button class="navbar-logo" onclick="goToPage('home')">
+            <a href="index.html" class="navbar-logo">
                 E<span class="logo-dot">.</span>
-            </button>
+            </a>
 
             <!-- Desktop menu -->
             <div class="nav-menu" id="navMenu">
-                <button class="nav-link" onclick="goToPage('home')">ANA SAYFA</button>
-                <button class="nav-link" onclick="goToPage('about')">HAKKIMDA</button>
-                <button class="nav-link" onclick="goToPage('skills')">BECERİLER</button>
-                <button class="nav-link" onclick="goToPage('projects')">PROJELER</button>
-                <button class="nav-link" onclick="goToPage('contact')">İLETİŞİM</button>
-                <button class="nav-link" onclick="goToPage('form')">FORM</button>
+                <a href="index.html" class="nav-link">ANA SAYFA</a>
+                <a href="about.html" class="nav-link">HAKKIMDA</a>
+                <a href="skills.html" class="nav-link">BECERİLER</a>
+                <a href="projects.html" class="nav-link">PROJELER</a>
+                <a href="contact.html" class="nav-link">İLETİŞİM</a>
+                <a href="form.html" class="nav-link">FORM</a>
             </div>
 
             <!-- Year badge -->
@@ -47,16 +47,16 @@
 
         <!-- Mobile menu -->
         <div class="mobile-menu" id="mobileMenu">
-            <button class="nav-link" onclick="goToPage('home')">ANA SAYFA</button>
-            <button class="nav-link" onclick="goToPage('about')">HAKKIMDA</button>
-            <button class="nav-link" onclick="goToPage('skills')">BECERİLER</button>
-            <button class="nav-link" onclick="goToPage('projects')">PROJELER</button>
-            <button class="nav-link" onclick="goToPage('contact')">İLETİŞİM</button>
-            <button class="nav-link" onclick="goToPage('form')">FORM</button>
+            <a href="index.html" class="nav-link">ANA SAYFA</a>
+            <a href="about.html" class="nav-link">HAKKIMDA</a>
+            <a href="skills.html" class="nav-link">BECERİLER</a>
+            <a href="projects.html" class="nav-link">PROJELER</a>
+            <a href="contact.html" class="nav-link">İLETİŞİM</a>
+            <a href="form.html" class="nav-link">FORM</a>
         </div>
     </nav>
 
-    <!-- Pages Container -->
+    <!-- Main Content -->
     <main class="pages-container">
         <!-- PAGE 1: HOME -->
         <section id="page-home" class="page active">
@@ -88,22 +88,22 @@
                         </div>
 
                         <nav class="hero-menu">
-                            <button class="hero-menu-item" onclick="goToPage('about')">
+                            <a href="about.html" class="hero-menu-item">
                                 <span class="menu-line"></span>
                                 <span class="menu-text">HAKKIMDA</span>
-                            </button>
-                            <button class="hero-menu-item" onclick="goToPage('skills')">
+                            </a>
+                            <a href="skills.html" class="hero-menu-item">
                                 <span class="menu-line"></span>
                                 <span class="menu-text">BECERİLER</span>
-                            </button>
-                            <button class="hero-menu-item" onclick="goToPage('projects')">
+                            </a>
+                            <a href="projects.html" class="hero-menu-item">
                                 <span class="menu-line"></span>
                                 <span class="menu-text">PROJELER</span>
-                            </button>
-                            <button class="hero-menu-item" onclick="goToPage('contact')">
+                            </a>
+                            <a href="contact.html" class="hero-menu-item">
                                 <span class="menu-line"></span>
                                 <span class="menu-text">İLETİŞİM</span>
-                            </button>
+                            </a>
                         </nav>
                     </div>
 
@@ -569,16 +569,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <span class="footer-logo">E<span class="logo-dot">.</span></span>
-        <p class="footer-text">© 2026 Esma — Tüm hakları saklıdır</p>
-        <div class="footer-location">
-            <span class="location-dot"></span>
-            <span>Kırşehir, TR</span>
-        </div>
-    </footer>
-
-    <script src="assests/js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
