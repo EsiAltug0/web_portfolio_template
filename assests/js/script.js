@@ -35,6 +35,24 @@ function toggleMobileMenu() {
     }
 }
 
+// RESPONSIVE DESIGN - WINDOW RESIZE HANDLER
+function handleResponsiveDesign() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    
+    // Close mobile menu on larger screens
+    if (window.innerWidth > 768) {
+        if (mobileMenu) mobileMenu.classList.remove('active');
+        if (mobileMenuBtn) mobileMenuBtn.classList.remove('active');
+    }
+}
+
+// Listen for window resize events
+window.addEventListener('resize', handleResponsiveDesign);
+
+// Initial responsive check
+handleResponsiveDesign();
+
 // SKILL BAR ANIMATIONS
 function animateSkillBars() {
     const skillBars = document.querySelectorAll('.skill-bar-fill');
