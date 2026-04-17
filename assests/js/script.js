@@ -2,33 +2,35 @@
 function toggleMobileMenu() {
     const mobileMenu = document.getElementById('mobileMenu');
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    
-    if (mobileMenu) {
-        mobileMenu.classList.toggle('active');
-    }
-    
-    if (mobileMenuBtn) {
-        mobileMenuBtn.classList.toggle('active');
-    }
+    if (mobileMenu) mobileMenu.classList.toggle('active');
+    if (mobileMenuBtn) mobileMenuBtn.classList.toggle('active');
 }
 
-// RESPONSIVE DESIGN - WINDOW RESIZE HANDLER
-function handleResponsiveDesign() {
-    const mobileMenu = document.getElementById('mobileMenu');
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    
-    // Close mobile menu on larger screens
-    if (window.innerWidth > 768) {
-        if (mobileMenu) mobileMenu.classList.remove('active');
-        if (mobileMenuBtn) mobileMenuBtn.classList.remove('active');
-    }
+// SKILL BAR ANIMATIONS
+function animateSkillBars() {
+    const skillBars = document.querySelectorAll('.skill-bar-fill');
+    skillBars.forEach(bar => {
+        const width = bar.getAttribute('data-width');
+        if (width) {
+            bar.style.animation = 'none';
+            void bar.offsetWidth;
+            bar.style.animation = `fillBar 1.5s ease-out forwards`;
+            bar.style.setProperty('--final-width', width + '%');
+        }
+    });
 }
 
-// Listen for window resize events
-window.addEventListener('resize', handleResponsiveDesign);
-
-// Initial responsive check
-handleResponsiveDesign();
+// FORM VALIDATION
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            form.style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+        });
+    }
+});
 
 // NAVBAR STICKY EFFECT
 window.addEventListener('scroll', function() {
@@ -40,31 +42,18 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// SMOOTH SCROLL FOR ANCHOR LINKS
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href !== '#') {
-            e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        }
-    });
-});
-
-// GLITCH TEXT ANIMATION
-document.addEventListener('DOMContentLoaded', function() {
+// INITIALIZE
+window.addEventListener('load', function() {
+    animateSkillBars();
     const glitchTexts = document.querySelectorAll('.glitch-text');
-    
     glitchTexts.forEach(text => {
-        const originalText = text.textContent;
-        text.setAttribute('data-text', originalText);
+        text.setAttribute('data-text', text.textContent);
     });
 });
 
-console.log('Portfolio 2026 - Responsive Version Loaded Successfully! ✓');
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenu) mobileMenu.classList.remove('active');
+    }
+});
