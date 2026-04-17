@@ -4,132 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Esma | Portfolio 2026</title>
-    <meta name="description" content="Esma - Bilgisayar Programcılığı öğrencisi, dijital tasarım ve yazılım geliştirme portfolyosu">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assests/css/style.css">
 </head>
 <body>
-    <!-- Scanline overlay -->
     <div class="scanline-overlay"></div>
-
-    <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-container">
-            <a href="index.html" class="navbar-logo">
-                E<span class="logo-dot">.</span>
-            </a>
-
-            <!-- Desktop menu -->
+            <a href="index.html" class="navbar-logo">E<span class="logo-dot">.</span></a>
             <div class="nav-menu" id="navMenu">
-                <a href="index.html" class="nav-link">ANA SAYFA</a>
-                    <a href="pages/about.html" class="nav-link">HAKKIMDA</a>
-                <a href="pages/project.html" class="nav-link">BECERİLER</a>
+                <a href="index.html" class="nav-link active">ANA SAYFA</a>
+                <a href="pages/about.html" class="nav-link">HAKKIMDA</a>
                 <a href="pages/project.html" class="nav-link">PROJELER</a>
                 <a href="pages/contact.html" class="nav-link">İLETİŞİM</a>
                 <a href="pages/form.html" class="nav-link">FORM</a>
             </div>
-
-            <!-- Year badge -->
-            <div class="year-badge">
-                <span class="pulse-dot"></span>
-                2026
-            </div>
-
-            <!-- Mobile menu button -->
+            <div class="year-badge"><span class="pulse-dot"></span>2026</div>
             <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </button>
         </div>
-
-        <!-- Mobile menu -->
         <div class="mobile-menu" id="mobileMenu">
-            <a href="index.html" class="nav-link">ANA SAYFA</a>
-                <a href="pages/about.html" class="nav-link">HAKKIMDA</a>
-            <a href="pages/project.html" class="nav-link">BECERİLER</a>
+            <a href="index.html" class="nav-link active">ANA SAYFA</a>
+            <a href="pages/about.html" class="nav-link">HAKKIMDA</a>
             <a href="pages/project.html" class="nav-link">PROJELER</a>
             <a href="pages/contact.html" class="nav-link">İLETİŞİM</a>
             <a href="pages/form.html" class="nav-link">FORM</a>
         </div>
     </nav>
 
-    <!-- Main Content -->
     <main class="pages-container">
-        <!-- PAGE 1: HOME -->
-        <section id="page-home" class="page active">
+        <section class="page active">
             <div class="hero-section">
                 <div class="hero-bg"></div>
                 <div class="hero-overlay"></div>
                 <div class="hero-grid"></div>
-                <div class="floating-hearts">
-                    <div class="heart heart-1">💗</div>
-                    <div class="heart heart-2">💗</div>
-                    <div class="heart heart-3">💗</div>
-                    <div class="heart heart-4">💗</div>
-                    <div class="heart heart-5">💗</div>
-                </div>
-                
                 <div class="hero-content">
                     <div class="hero-left">
                         <div class="hero-tag animate-fade-in-up">
                             <span class="tag-text">PORTFOLIO 2026</span>
                             <div class="tag-line"></div>
                         </div>
-
                         <h1 class="hero-title glitch-text" data-text="PORTFOLIO">PORTFOLIO</h1>
                         <h2 class="hero-name">ESMA</h2>
-
                         <div class="hero-role">
                             <span class="role-dot"></span>
                             <span>Tasarım & Yazılım Geliştirici</span>
                         </div>
-
                         <nav class="hero-menu">
-                            <a href="about.html" class="hero-menu-item">
-                                <span class="menu-line"></span>
-                                <span class="menu-text">HAKKIMDA</span>
-                            </a>
-                            <a href="skills.html" class="hero-menu-item">
-                                <span class="menu-line"></span>
-                                <span class="menu-text">BECERİLER</span>
-                            </a>
-                            <a href="projects.html" class="hero-menu-item">
-                                <span class="menu-line"></span>
-                                <span class="menu-text">PROJELER</span>
-                            </a>
-                            <a href="contact.html" class="hero-menu-item">
-                                <span class="menu-line"></span>
-                                <span class="menu-text">İLETİŞİM</span>
-                            </a>
+                            <a href="pages/about.html" class="hero-menu-item"><span class="menu-line"></span><span class="menu-text">HAKKIMDA</span></a>
+                            <a href="pages/project.html" class="hero-menu-item"><span class="menu-line"></span><span class="menu-text">PROJELER</span></a>
+                            <a href="pages/contact.html" class="hero-menu-item"><span class="menu-line"></span><span class="menu-text">İLETİŞİM</span></a>
                         </nav>
                     </div>
-
                     <div class="hero-right">
                         <div class="rotating-rings">
                             <div class="ring ring-1"></div>
                             <div class="ring ring-2"></div>
                             <div class="center-circle"><span>E</span></div>
-                            <div class="floating-dot dot-1"></div>
-                            <div class="floating-dot dot-2"></div>
-                            <div class="floating-dot dot-3"></div>
-                            <div class="floating-dot dot-4"></div>
-                            <div class="floating-dot dot-5"></div>
-                            <div class="floating-dot dot-6"></div>
+                            <div class="floating-dot dot-1"></div><div class="floating-dot dot-2"></div><div class="floating-dot dot-3"></div>
+                            <div class="floating-dot dot-4"></div><div class="floating-dot dot-5"></div><div class="floating-dot dot-6"></div>
                         </div>
                     </div>
                 </div>
-
-                <div class="scroll-indicator">
-                    <span>SCROLL</span>
-                    <div class="scroll-line"></div>
-                </div>
+                <div class="scroll-indicator"><span>SCROLL</span><div class="scroll-line"></div></div>
             </div>
         </section>
     </main>
-
+    <footer class="footer">
+        <span class="footer-logo">E<span class="logo-dot">.</span></span>
+        <p class="footer-text">© 2026 Esma — Tüm hakları saklıdır</p>
+        <div class="footer-location"><span class="location-dot"></span><span>Kırşehir, TR</span></div>
+    </footer>
     <script src="assests/js/script.js"></script>
 </body>
 </html>
