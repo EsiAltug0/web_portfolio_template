@@ -1,15 +1,7 @@
-/* RESPONSIVE IMAGES - Hoca İsteği */
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
+/* Taşma kontrolü */
+img { max-width: 100%; height: auto; display: block; }
 
-/* Sayfaların gizlenmesini engelle */
-.page {
-    display: block !important;
-    opacity: 1 !important;
-    animation: fadeIn 0.8s ease-out forwards;
-}
+/* Multi-page yapıda sayfaların görünür olması için */
+.page { display: block !important; opacity: 1 !important; }
 
-/* Buradan sonra senin mevcut style (6).css kodların devam edecek... */
+/* ... senin diğer tüm CSS kodların buraya gelecek ... */
