@@ -3,53 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeler | Esma Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Projeler | Esma Portfolio 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assests/css/style.css">
 </head>
 <body>
     <div class="scanline-overlay"></div>
+
     <nav class="navbar" id="navbar">
         <div class="navbar-container">
-            <a href="../index.html" class="navbar-logo">E<span class="logo-dot">.</span></a>
+            <a href="../index.html" class="navbar-logo" style="text-decoration: none;">
+                E<span class="logo-dot">.</span>
+            </a>
             <div class="nav-menu" id="navMenu">
                 <a href="../index.html" class="nav-link">ANA SAYFA</a>
                 <a href="about.html" class="nav-link">HAKKIMDA</a>
-                <a href="project.html" class="nav-link active">PROJELER</a>
+                <a href="project.html" class="nav-link">PROJELER</a>
                 <a href="contact.html" class="nav-link">İLETİŞİM</a>
                 <a href="form.html" class="nav-link">FORM</a>
             </div>
+            <div class="year-badge">
+                <span class="pulse-dot"></span>
+                2026
+            </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()">
-                <span></span><span></span><span></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
         </div>
         <div class="mobile-menu" id="mobileMenu">
             <a href="../index.html" class="nav-link">ANA SAYFA</a>
             <a href="about.html" class="nav-link">HAKKIMDA</a>
-            <a href="project.html" class="nav-link active">PROJELER</a>
+            <a href="project.html" class="nav-link">PROJELER</a>
             <a href="contact.html" class="nav-link">İLETİŞİM</a>
             <a href="form.html" class="nav-link">FORM</a>
         </div>
     </nav>
 
     <main class="pages-container">
-        <section class="page active">
+        <section id="page-projects" class="page active">
             <div class="section-container">
-                <div class="section-header"><span class="section-number">02</span><div class="section-divider"></div></div>
-                <div class="projects-header"><h2 class="section-title">PROJELER</h2><span class="projects-year">2026</span></div>
+                <div class="section-header">
+                    <span class="section-number">03</span>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="projects-header">
+                    <h2 class="section-title">PROJELER</h2>
+                    <span class="projects-year">2026</span>
+                </div>
+
                 <div class="projects-grid">
-                    <div class="project-card" style="grid-column: span 1; grid-row: span 1;">
+                    <div class="project-card">
                         <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663414524144/Pr7irsPhggfGgE57CFPaYr/project-placeholder-3-iro8zEJmh6PBvRbGWo2ttm.webp" alt="Logo Tasarımı">
-                        <div class="project-overlay"><div class="project-info"><div class="project-tools"><span class="tool-badge">Photoshop</span></div><h4>Logo Tasarımı</h4></div></div>
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <div class="project-tools"><span class="tool-badge">Photoshop</span></div>
+                                <h4>Logo Tasarımı</h4>
+                                <p>Grafik Tasarım</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="project-card" style="grid-column: span 1; grid-row: span 2;">
+                    <div class="project-card" style="grid-row: span 2;">
                         <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663414524144/Pr7irsPhggfGgE57CFPaYr/project-placeholder-2-TqicT2wSoXiQmStQFzDENe.webp" alt="Sosyal Medya Görseli">
-                        <div class="project-overlay"><div class="project-info"><div class="project-tools"><span class="tool-badge">Canva</span></div><h4>Sosyal Medya</h4></div></div>
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <div class="project-tools"><span class="tool-badge">Canva</span></div>
+                                <h4>Sosyal Medya Görseli</h4>
+                                <p>Dijital İçerik</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" style="grid-column: span 2;">
+                        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663414524144/Pr7irsPhggfGgE57CFPaYr/project-placeholder-1-mpDj8wgz6QUG5f7AoZEkYv.webp" alt="Dijital Tasarım">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <div class="project-tools">
+                                    <span class="tool-badge">Animate</span>
+                                    <span class="tool-badge">Photoshop</span>
+                                </div>
+                                <h4>Dijital Tasarım</h4>
+                                <p>Adobe Animate</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663414524144/Pr7irsPhggfGgE57CFPaYr/project-placeholder-3-iro8zEJmh6PBvRbGWo2ttm.webp" alt="Marka Kimliği">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <div class="project-tools"><span class="tool-badge">Photoshop</span></div>
+                                <h4>Marka Kimliği</h4>
+                                <p>Branding</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663414524144/Pr7irsPhggfGgE57CFPaYr/project-placeholder-2-TqicT2wSoXiQmStQFzDENe.webp" alt="İçerik Tasarımı">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <div class="project-tools"><span class="tool-badge">Canva</span></div>
+                                <h4>İçerik Tasarımı</h4>
+                                <p>Sosyal Medya</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663414524144/Pr7irsPhggfGgE57CFPaYr/project-placeholder-1-mpDj8wgz6QUG5f7AoZEkYv.webp" alt="Animasyon Projesi">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <div class="project-tools"><span class="tool-badge">Adobe Animate</span></div>
+                                <h4>Animasyon Projesi</h4>
+                                <p>Motion Design</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <footer class="footer">
+        <a href="../index.html" class="footer-logo" style="text-decoration: none;">E<span class="logo-dot">.</span></a>
+        <p class="footer-text">© 2026 Esma — Tüm hakları saklıdır</p>
+        <div class="footer-location">
+            <span class="location-dot"></span>
+            <span>Kırşehir, TR</span>
+        </div>
+    </footer>
+
     <script src="../assests/js/script.js"></script>
 </body>
 </html>
