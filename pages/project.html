@@ -3,212 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeler | Esma Portfolio 2026</title>
-    <meta name="description" content="Esma - Beceriler ve Projeler sayfası">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <title>Projeler | Esma Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assests/css/style.css">
 </head>
 <body>
-    <!-- Scanline overlay -->
     <div class="scanline-overlay"></div>
-
-    <!-- Navigation -->
     <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <!-- Logo -->
-            <a href="../index.html" class="nav-logo">E.</a>
-
-            <!-- Desktop menu -->
+        <div class="navbar-container">
+            <a href="../index.html" class="navbar-logo">E<span class="logo-dot">.</span></a>
             <div class="nav-menu" id="navMenu">
                 <a href="../index.html" class="nav-link">ANA SAYFA</a>
                 <a href="about.html" class="nav-link">HAKKIMDA</a>
-                <a href="project.html" class="nav-link">BECERİLER</a>
-                <a href="project.html" class="nav-link">PROJELER</a>
+                <a href="project.html" class="nav-link active">PROJELER</a>
                 <a href="contact.html" class="nav-link">İLETİŞİM</a>
                 <a href="form.html" class="nav-link">FORM</a>
             </div>
-
-            <!-- Year badge -->
-            <div class="year-badge">2026</div>
-
-            <!-- Mobile menu button -->
             <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </button>
         </div>
-
-        <!-- Mobile menu -->
         <div class="mobile-menu" id="mobileMenu">
             <a href="../index.html" class="nav-link">ANA SAYFA</a>
             <a href="about.html" class="nav-link">HAKKIMDA</a>
-            <a href="project.html" class="nav-link">BECERİLER</a>
-            <a href="project.html" class="nav-link">PROJELER</a>
+            <a href="project.html" class="nav-link active">PROJELER</a>
             <a href="contact.html" class="nav-link">İLETİŞİM</a>
             <a href="form.html" class="nav-link">FORM</a>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Beceriler Bölümü -->
-        <section class="skills-section">
-            <div class="section-header">
-                <h2 class="section-number">02</h2>
-                <h1 class="section-title">BECERİLER</h1>
-            </div>
-
-            <div class="skills-container">
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>YAZILIM ARAÇLARI</h3>
-                        <div class="tool-icons">
-                            <div class="tool-icon" title="Photoshop">Ps</div>
-                            <div class="tool-icon" title="Animate">An</div>
-                            <div class="tool-icon" title="Canva">Cv</div>
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <h3>YAZILIM BECERİLERİ</h3>
-                        <div class="skill-bars">
-                            <div class="skill-item">
-                                <div class="skill-label">HTML / CSS</div>
-                                <div class="skill-bar">
-                                    <div class="skill-bar-fill" data-width="75"></div>
-                                </div>
-                                <span class="skill-percentage">75%</span>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-label">JavaScript</div>
-                                <div class="skill-bar">
-                                    <div class="skill-bar-fill" data-width="55"></div>
-                                </div>
-                                <span class="skill-percentage">55%</span>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-label">Python Temelleri</div>
-                                <div class="skill-bar">
-                                    <div class="skill-bar-fill" data-width="50"></div>
-                                </div>
-                                <span class="skill-percentage">50%</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <h3>DİL (İLETİŞİM)</h3>
-                        <div class="skill-bars">
-                            <div class="skill-item">
-                                <div class="skill-label">TÜRKÇE</div>
-                                <div class="skill-bar">
-                                    <div class="skill-bar-fill" data-width="100"></div>
-                                </div>
-                                <span class="skill-percentage">100%</span>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-label">İNGİLİZCE</div>
-                                <div class="skill-bar">
-                                    <div class="skill-bar-fill" data-width="45"></div>
-                                </div>
-                                <span class="skill-percentage">45%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="education-info">
-                    <div class="info-card">
-                        <h4>EĞİTİM</h4>
-                        <p><strong>Kırşehir Ahi Evran Üniversitesi</strong></p>
-                        <p>Bilgisayar Programcılığı</p>
-                        <p>Devam ediyor</p>
-                    </div>
-
-                    <div class="info-card">
-                        <h4>ODAK ALANLARI</h4>
-                        <ul>
-                            <li>Logo & Marka Tasarımı</li>
-                            <li>Sosyal Medya Görselleri</li>
-                            <li>Dijital İçerik Üretimi</li>
-                            <li>Animasyon & Motion</li>
-                            <li>Web Geliştirme</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projeler Bölümü -->
-        <section class="projects-section">
-            <div class="section-header">
-                <h2 class="section-number">03</h2>
-                <h1 class="section-title">PROJELER</h1>
-            </div>
-
-            <div class="projects-container">
+    <main class="pages-container">
+        <section class="page active">
+            <div class="section-container">
+                <div class="section-header"><span class="section-number">02</span><div class="section-divider"></div></div>
+                <div class="projects-header"><h2 class="section-title">PROJELER</h2><span class="projects-year">2026</span></div>
                 <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
-                        <div class="project-info">
-                            <h3>Logo Tasarımı</h3>
-                            <p>Grafik Tasarım</p>
-                            <span class="project-tools">Photoshop</span>
-                        </div>
+                    <div class="project-card" style="grid-column: span 1; grid-row: span 1;">
+                        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663414524144/Pr7irsPhggfGgE57CFPaYr/project-placeholder-3-iro8zEJmh6PBvRbGWo2ttm.webp" alt="Logo Tasarımı">
+                        <div class="project-overlay"><div class="project-info"><div class="project-tools"><span class="tool-badge">Photoshop</span></div><h4>Logo Tasarımı</h4></div></div>
                     </div>
-
-                    <div class="project-card">
-                        <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
-                        <div class="project-info">
-                            <h3>Sosyal Medya Görseli</h3>
-                            <p>Dijital İçerik</p>
-                            <span class="project-tools">Canva</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
-                        <div class="project-info">
-                            <h3>Dijital Tasarım</h3>
-                            <p>Adobe Animate</p>
-                            <span class="project-tools">Animate Photoshop</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
-                        <div class="project-info">
-                            <h3>Marka Kimliği</h3>
-                            <p>Branding</p>
-                            <span class="project-tools">Photoshop</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-image" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
-                        <div class="project-info">
-                            <h3>İçerik Tasarımı</h3>
-                            <p>Sosyal Medya</p>
-                            <span class="project-tools">Canva</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
-                        <div class="project-info">
-                            <h3>Animasyon Projesi</h3>
-                            <p>Motion Design</p>
-                            <span class="project-tools">Adobe Animate</span>
-                        </div>
+                    <div class="project-card" style="grid-column: span 1; grid-row: span 2;">
+                        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663414524144/Pr7irsPhggfGgE57CFPaYr/project-placeholder-2-TqicT2wSoXiQmStQFzDENe.webp" alt="Sosyal Medya Görseli">
+                        <div class="project-overlay"><div class="project-info"><div class="project-tools"><span class="tool-badge">Canva</span></div><h4>Sosyal Medya</h4></div></div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
-
     <script src="../assests/js/script.js"></script>
 </body>
 </html>
