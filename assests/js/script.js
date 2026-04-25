@@ -538,7 +538,7 @@ window.addEventListener('resize', () => {
 // ============================================
 // FORM SUBMIT LISTENER
 // ============================================
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener(function() {
     const form = document.getElementById('contactForm');
     if (form) {
         form.addEventListener('submit', function(e) {
