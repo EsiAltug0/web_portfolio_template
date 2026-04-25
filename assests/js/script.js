@@ -250,9 +250,6 @@ function animateSkillBars() {
 }
 
 // ============================================
-// FORM VALIDATION
-// ============================================
-// ============================================
 // FORM VALIDATION & DATA HANDLING
 // ============================================
 
@@ -384,7 +381,6 @@ function initFormValidation() {
     initCharCounter();
     renderSubmissions();
 
-    // Real-time validation
     const fields = [
         { id: 'name', min: 2, error: 'nameError', msg: 'Adınız en az 2 karakter olmalıdır' },
         { id: 'subject', min: 3, error: 'subjectError', msg: 'Konu en az 3 karakter olmalıdır' },
@@ -486,6 +482,7 @@ function initFormValidation() {
         }
     });
 }
+
 // ============================================
 // NAVBAR ACTIVE STATE
 // ============================================
@@ -534,8 +531,6 @@ window.addEventListener('resize', () => {
         if (mm) mm.classList.remove('active');
     }
 });
-
-
 
 // ============================================
 // MAIN INIT
