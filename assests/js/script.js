@@ -565,8 +565,6 @@ document.addEventListener('DOMContentLoaded', function() {
     highlightActiveNav();
     initGlitchText();
     animateSkillBars();
-    console.log('Portfolio 2026 - Interactive Features Loaded! ✓');
-});
-    
+    initFormValidation();
     console.log('Portfolio 2026 - Interactive Features Loaded! ✓');
 });
