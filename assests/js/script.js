@@ -535,23 +535,7 @@ window.addEventListener('resize', () => {
     }
 });
 
-// ============================================
-// FORM SUBMIT LISTENER
-// ============================================
-document.addEventListener(function() {
-    const form = document.getElementById('contactForm');
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            clearErrors();
-            if (validateForm()) {
-                showSuccessMessage();
-                form.reset();
-                setTimeout(() => form.submit(), 1000);
-            }
-        });
-    }
-});
+
 
 // ============================================
 // MAIN INIT
