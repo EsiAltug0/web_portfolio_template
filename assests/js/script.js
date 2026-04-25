@@ -250,11 +250,13 @@ function animateSkillBars() {
 }
 
 // ============================================
-// FORM VALIDATION
+// FORM VALIDATION & DATA HANDLING
 // ============================================
+
 function validateForm() {
     const name = document.getElementById('name')?.value.trim() || '';
     const email = document.getElementById('email')?.value.trim() || '';
+    const phone = document.getElementById('phone')?.value.trim() || '';
     const type = document.getElementById('type')?.value || '';
     const subject = document.getElementById('subject')?.value.trim() || '';
     const message = document.getElementById('message')?.value.trim() || '';
@@ -264,6 +266,7 @@ function validateForm() {
     
     if (name.length < 2) { showError('nameError', 'Adınız en az 2 karakter olmalıdır'); isValid = false; }
     if (!isValidEmail(email)) { showError('emailError', 'Lütfen geçerli bir e-posta adresi giriniz'); isValid = false; }
+    if (phone && !isValidPhone(phone)) { showError('phoneError', 'Lütfen geçerli bir telefon numarası giriniz (05xx xxx xx xx)'); isValid = false; }
     if (!type) { showError('typeError', 'Lütfen içerik türünü seçiniz'); isValid = false; }
     if (subject.length < 3) { showError('subjectError', 'Konu en az 3 karakter olmalıdır'); isValid = false; }
     if (message.length < 10) { showError('messageError', 'Mesaj en az 10 karakter olmalıdır'); isValid = false; }
@@ -274,6 +277,11 @@ function validateForm() {
 
 function isValidEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function isValidPhone(phone) {
+    const cleaned = phone.replace(/\s/g, '').replace(/\+90/, '').replace(/^0/, '');
+    return /^5\d{9}$/.test(cleaned);
 }
 
 function showError(elementId, message) {
@@ -288,6 +296,11 @@ function clearErrors() {
     });
 }
 
+function clearFieldError(elementId) {
+    const el = document.getElementById(elementId);
+    if (el) { el.textContent = ''; el.classList.remove('show'); }
+}
+
 function showSuccessMessage() {
     const form = document.getElementById('contactForm');
     const success = document.getElementById('successMessage');
@@ -295,6 +308,179 @@ function showSuccessMessage() {
         form.style.display = 'none';
         success.style.display = 'block';
     }
+}
+
+function saveFormData(formData) {
+    const submissions = JSON.parse(localStorage.getItem('formSubmissions') || '[]');
+    submissions.push({
+        ...formData,
+        id: Date.now(),
+        date: new Date().toLocaleString('tr-TR')
+    });
+    localStorage.setItem('formSubmissions', JSON.stringify(submissions));
+    console.log('✓ Form verisi kaydedildi:', formData);
+    console.log('✓ Toplam gönderim sayısı:', submissions.length);
+}
+
+function renderSubmissions() {
+    const container = document.getElementById('submissionsList');
+    if (!container) return;
+    
+    const submissions = JSON.parse(localStorage.getItem('formSubmissions') || '[]');
+    
+    if (submissions.length === 0) {
+        container.innerHTML = '<p class="no-data">Henüz gönderilen mesaj bulunmamaktadır.</p>';
+        return;
+    }
+    
+    container.innerHTML = submissions.slice().reverse().map(sub => `
+        <div class="submission-card">
+            <div class="submission-header">
+                <span class="submission-name">${escapeHtml(sub.name)}</span>
+                <span class="submission-date">${sub.date}</span>
+            </div>
+            <div class="submission-meta">
+                <span class="submission-type">${escapeHtml(sub.type)}</span>
+                <span class="submission-subject">${escapeHtml(sub.subject)}</span>
+            </div>
+            <p class="submission-message">${escapeHtml(sub.message)}</p>
+        </div>
+    `).join('');
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function initCharCounter() {
+    const messageInput = document.getElementById('message');
+    const charCount = document.getElementById('charCount');
+    if (!messageInput || !charCount) return;
+    
+    messageInput.addEventListener('input', function() {
+        const current = this.value.length;
+        const max = this.getAttribute('maxlength') || 500;
+        charCount.textContent = current;
+        
+        if (current > max * 0.9) {
+            charCount.style.color = 'var(--red)';
+        } else if (current >= 10) {
+            charCount.style.color = 'var(--primary)';
+        } else {
+            charCount.style.color = 'var(--text-light)';
+        }
+    });
+}
+
+function initFormValidation() {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+
+    initCharCounter();
+    renderSubmissions();
+
+    const fields = [
+        { id: 'name', min: 2, error: 'nameError', msg: 'Adınız en az 2 karakter olmalıdır' },
+        { id: 'subject', min: 3, error: 'subjectError', msg: 'Konu en az 3 karakter olmalıdır' },
+        { id: 'message', min: 10, error: 'messageError', msg: 'Mesaj en az 10 karakter olmalıdır' }
+    ];
+
+    fields.forEach(field => {
+        const input = document.getElementById(field.id);
+        if (!input) return;
+        
+        input.addEventListener('input', function() {
+            if (this.value.trim().length > 0 && this.value.trim().length < field.min) {
+                showError(field.error, field.msg);
+            } else {
+                clearFieldError(field.error);
+            }
+        });
+        
+        input.addEventListener('blur', function() {
+            if (this.value.trim().length < field.min) {
+                showError(field.error, field.msg);
+            } else {
+                clearFieldError(field.error);
+            }
+        });
+    });
+
+    const emailInput = document.getElementById('email');
+    if (emailInput) {
+        emailInput.addEventListener('input', function() {
+            if (this.value.trim() && !isValidEmail(this.value.trim())) {
+                showError('emailError', 'Lütfen geçerli bir e-posta adresi giriniz');
+            } else {
+                clearFieldError('emailError');
+            }
+        });
+    }
+
+    const phoneInput = document.getElementById('phone');
+    if (phoneInput) {
+        phoneInput.addEventListener('input', function() {
+            let value = this.value.replace(/\D/g, '');
+            if (value.startsWith('0')) value = value.substring(1);
+            if (value.startsWith('90')) value = value.substring(2);
+            
+            if (value.length > 0) {
+                value = '0' + value;
+                if (value.length > 4) value = value.slice(0, 4) + ' ' + value.slice(4);
+                if (value.length > 8) value = value.slice(0, 8) + ' ' + value.slice(8);
+                if (value.length > 11) value = value.slice(0, 11) + ' ' + value.slice(11);
+            }
+            this.value = value.trim();
+            
+            if (this.value && !isValidPhone(this.value)) {
+                showError('phoneError', 'Geçersiz telefon formatı');
+            } else {
+                clearFieldError('phoneError');
+            }
+        });
+    }
+
+    const typeSelect = document.getElementById('type');
+    if (typeSelect) {
+        typeSelect.addEventListener('change', function() {
+            if (this.value) clearFieldError('typeError');
+        });
+    }
+
+    const termsCheckbox = document.getElementById('terms');
+    if (termsCheckbox) {
+        termsCheckbox.addEventListener('change', function() {
+            if (this.checked) clearFieldError('termsError');
+        });
+    }
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        clearErrors();
+        
+        if (validateForm()) {
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone')?.value.trim() || '',
+                type: document.getElementById('type').value,
+                subject: document.getElementById('subject').value.trim(),
+                message: document.getElementById('message').value.trim()
+            };
+            
+            saveFormData(formData);
+            showSuccessMessage();
+            renderSubmissions();
+            form.reset();
+            const charCount = document.getElementById('charCount');
+            if (charCount) {
+                charCount.textContent = '0';
+                charCount.style.color = 'var(--text-light)';
+            }
+        }
+    });
 }
 
 // ============================================
@@ -347,24 +533,6 @@ window.addEventListener('resize', () => {
 });
 
 // ============================================
-// FORM SUBMIT LISTENER
-// ============================================
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('contactForm');
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            clearErrors();
-            if (validateForm()) {
-                showSuccessMessage();
-                form.reset();
-                setTimeout(() => form.submit(), 1000);
-            }
-        });
-    }
-});
-
-// ============================================
 // MAIN INIT
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
@@ -376,6 +544,6 @@ document.addEventListener('DOMContentLoaded', function() {
     highlightActiveNav();
     initGlitchText();
     animateSkillBars();
-    
+    initFormValidation();
     console.log('Portfolio 2026 - Interactive Features Loaded! ✓');
 });
