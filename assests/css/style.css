@@ -1907,4 +1907,206 @@ body.light-mode .form-group select {
         align-items: flex-start;
     }
 }
+/* ============================================
+   JSON VERI & SEPET SISTEMI (4 Mayis Odevi)
+   ============================================ */
 
+.json-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    padding: 20px 0;
+}
+
+.json-project-card {
+    background: rgba(0, 212, 255, 0.05);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.json-project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2);
+    border-color: var(--primary);
+}
+
+.json-project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border);
+}
+
+.json-card-content {
+    padding: 20px;
+}
+
+.json-card-category {
+    display: inline-block;
+    background: var(--primary);
+    color: var(--bg);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.json-card-title {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--text);
+    font-family: 'Orbitron', sans-serif;
+}
+
+.json-card-description {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.json-card-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.json-tech-tag {
+    background: rgba(255, 0, 85, 0.15);
+    color: var(--red);
+    padding: 3px 10px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    border: 1px solid rgba(255, 0, 85, 0.3);
+}
+
+.json-card-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.json-btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+}
+
+.json-btn-cart {
+    background: rgba(255, 165, 0, 0.15);
+    color: #ffa500;
+    border: 1px solid #ffa500;
+}
+
+.json-btn-cart:hover,
+.json-btn-cart.active {
+    background: #ffa500;
+    color: var(--bg);
+}
+
+.json-btn-detail {
+    background: rgba(0, 212, 255, 0.15);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+}
+
+.json-btn-detail:hover {
+    background: var(--primary);
+    color: var(--bg);
+}
+
+.json-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.json-modal.active {
+    display: flex;
+}
+
+.json-modal-content {
+    background: linear-gradient(135deg, var(--bg), var(--bg-dark));
+    border-radius: 15px;
+    max-width: 600px;
+    width: 100%;
+    padding: 30px;
+    position: relative;
+    border: 2px solid var(--primary);
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.3);
+}
+
+.json-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-light);
+    transition: color 0.3s;
+    z-index: 10;
+}
+
+.json-close-btn:hover {
+    color: var(--red);
+}
+
+.json-empty-message {
+    text-align: center;
+    grid-column: 1 / -1;
+    padding: 60px;
+    color: var(--text-light);
+    font-size: 1.2rem;
+    border: 1px dashed var(--border);
+    border-radius: 15px;
+}
+
+.json-filter-btn {
+    padding: 10px 25px;
+    border: 2px solid var(--primary);
+    background: transparent;
+    color: var(--primary);
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    margin: 5px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+}
+
+.json-filter-btn:hover,
+.json-filter-btn.active {
+    background: var(--primary);
+    color: var(--bg);
+    box-shadow: 0 0 20px var(--primary);
+}
+
+@media (max-width: 768px) {
+    .json-projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
