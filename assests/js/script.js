@@ -547,3 +547,189 @@ document.addEventListener('DOMContentLoaded', function() {
     initFormValidation();
     console.log('Portfolio 2026 - Interactive Features Loaded! ✓');
 });
+// ============================================
+// GLOBAL DEĞİŞKENLER
+// ============================================
+let allProjects = [];
+let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+let currentFilter = 'all';
+
+// ============================================
+// DOM ELEMENTLERİ
+// ============================================
+const projectsContainer = document.getElementById('projectsContainer');
+const showAllBtn = document.getElementById('showAll');
+const showFavoritesBtn = document.getElementById('showFavorites');
+const detailModal = document.getElementById('detailModal');
+const closeBtn = document.querySelector('.close-btn');
+const modalImage = document.getElementById('modalImage');
+const modalTitle = document.getElementById('modalTitle');
+const modalDescription = document.getElementById('modalDescription');
+const modalTechnologies = document.getElementById('modalTechnologies');
+
+// ============================================
+// JSON'DAN VERİ OKUMA
+// ============================================
+async function loadProjects() {
+    try {
+        // ../data/projects.json çünkü pages/ klasöründeyiz
+        const response = await fetch('../data/projects.json');
+        allProjects = await response.json();
+        renderProjects();
+    } catch (error) {
+        console.error('Veri yüklenirken hata:', error);
+        projectsContainer.innerHTML = '<p class="empty-message">Veriler yüklenemedi.</p>';
+    }
+}
+
+// ============================================
+// KARTLARI RENDER ETME
+// ============================================
+function renderProjects() {
+    if (!projectsContainer) return;
+    
+    projectsContainer.innerHTML = '';
+    
+    let projectsToShow = allProjects;
+    
+    if (currentFilter === 'favorites') {
+        projectsToShow = allProjects.filter(p => favorites.includes(p.id));
+    }
+    
+    if (projectsToShow.length === 0) {
+        projectsContainer.innerHTML = `
+            <div class="empty-message">
+                ${currentFilter === 'favorites' 
+                    ? 'Henüz favori projeniz yok. ❤️' 
+                    : 'Gösterilecek proje bulunamadı.'}
+            </div>
+        `;
+        return;
+    }
+    
+    projectsToShow.forEach(project => {
+        const card = createProjectCard(project);
+        projectsContainer.appendChild(card);
+    });
+}
+
+// ============================================
+// TEK BİR PROJE KARTI OLUŞTURMA
+// ============================================
+function createProjectCard(project) {
+    const isFavorite = favorites.includes(project.id);
+    
+    const card = document.createElement('div');
+    card.className = 'project-card';
+    card.innerHTML = `
+        <img src="${project.image}" alt="${project.title}" loading="lazy">
+        <div class="card-content">
+            <span class="card-category">${project.category}</span>
+            <h3 class="card-title">${project.title}</h3>
+            <p class="card-description">${project.description}</p>
+            <div class="card-technologies">
+                ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+            </div>
+            <div class="card-actions">
+                <button class="btn btn-favorite ${isFavorite ? 'active' : ''}" 
+                        onclick="toggleFavorite(${project.id})" 
+                        title="${isFavorite ? 'Favorilerden Çıkar' : 'Favorilere Ekle'}">
+                    ${isFavorite ? '❤️' : '🤍'} Favori
+                </button>
+                <button class="btn btn-detail" onclick="showDetail(${project.id})">
+                    👁️ Detay
+                </button>
+            </div>
+        </div>
+    `;
+    
+    return card;
+}
+
+// ============================================
+// FAVORİ EKLEME / ÇIKARMA (localStorage)
+// ============================================
+function toggleFavorite(projectId) {
+    const index = favorites.indexOf(projectId);
+    
+    if (index === -1) {
+        favorites.push(projectId);
+    } else {
+        favorites.splice(index, 1);
+    }
+    
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+    renderProjects();
+}
+
+// ============================================
+// DETAY MODALINI GÖSTERME
+// ============================================
+function showDetail(projectId) {
+    const project = allProjects.find(p => p.id === projectId);
+    if (!project) return;
+    
+    modalImage.src = project.image;
+    modalImage.alt = project.title;
+    modalTitle.textContent = project.title;
+    modalDescription.textContent = project.description;
+    
+    modalTechnologies.innerHTML = `
+        <h3 style="color: #00d4ff; margin-bottom: 10px;">Kullanılan Teknolojiler:</h3>
+        <div class="card-technologies">
+            ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+        </div>
+    `;
+    
+    detailModal.classList.add('active');
+}
+
+// ============================================
+// MODAL KAPATMA
+// ============================================
+function closeModal() {
+    if (detailModal) detailModal.classList.remove('active');
+}
+
+// ============================================
+// FİLTRE BUTONLARI
+// ============================================
+if (showAllBtn) {
+    showAllBtn.addEventListener('click', () => {
+        currentFilter = 'all';
+        showAllBtn.classList.add('active');
+        if (showFavoritesBtn) showFavoritesBtn.classList.remove('active');
+        renderProjects();
+    });
+}
+
+if (showFavoritesBtn) {
+    showFavoritesBtn.addEventListener('click', () => {
+        currentFilter = 'favorites';
+        showFavoritesBtn.classList.add('active');
+        if (showAllBtn) showAllBtn.classList.remove('active');
+        renderProjects();
+    });
+}
+
+// ============================================
+// EVENT LISTENERS
+// ============================================
+if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+}
+
+if (detailModal) {
+    detailModal.addEventListener('click', (e) => {
+        if (e.target === detailModal) closeModal();
+    });
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+});
+
+// ============================================
+// BAŞLAT
+// ============================================
+document.addEventListener('DOMContentLoaded', loadProjects);
