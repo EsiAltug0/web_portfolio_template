@@ -572,13 +572,14 @@ const modalTechnologies = document.getElementById('modalTechnologies');
 // ============================================
 async function loadProjects() {
     try {
-        // ../data/projects.json çünkü pages/ klasöründeyiz
         const response = await fetch('../data/projects.json');
         allProjects = await response.json();
         renderProjects();
     } catch (error) {
         console.error('Veri yüklenirken hata:', error);
-        projectsContainer.innerHTML = '<p class="empty-message">Veriler yüklenemedi.</p>';
+        if (projectsContainer) {
+            projectsContainer.innerHTML = '<p class="empty-message">Veriler yüklenemedi.</p>';
+        }
     }
 }
 
@@ -721,12 +722,16 @@ if (closeBtn) {
 
 if (detailModal) {
     detailModal.addEventListener('click', (e) => {
-        if (e.target === detailModal) closeModal();
+        if (e.target === detailModal) {
+            closeModal();
+        }
     });
 }
 
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
+    if (e.key === 'Escape') {
+        closeModal();
+    }
 });
 
 // ============================================
