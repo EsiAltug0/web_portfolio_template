@@ -590,4 +590,110 @@ function renderProjects() {
     if (projectsToShow.length === 0) {
         projectsContainer.innerHTML = `
             <div class="json-empty-message">
-                ${currentFilter === 'cart' ? 'Sepetiniz boş. 🛒' :
+                ${currentFilter === 'cart' ? 'Sepetiniz boş. 🛒' : 'Gösterilecek proje bulunamadı.'}
+            </div>
+        `;
+        return;
+    }
+    
+    projectsToShow.forEach(project => {
+        const card = createProjectCard(project);
+        projectsContainer.appendChild(card);
+    });
+}
+
+function createProjectCard(project) {
+    const isInCart = cart.includes(project.id);
+    const card = document.createElement('div');
+    card.className = 'json-project-card';
+    card.innerHTML = `
+        <img src="${project.image}" alt="${project.title}" loading="lazy">
+        <div class="json-card-content">
+            <span class="json-card-category">${project.category}</span>
+            <h3 class="json-card-title">${project.title}</h3>
+            <p class="json-card-description">${project.description}</p>
+            <div class="json-card-technologies">
+                ${project.technologies.map(tech => `<span class="json-tech-tag">${tech}</span>`).join('')}
+            </div>
+            <div class="json-card-actions">
+                <button class="json-btn json-btn-cart ${isInCart ? 'active' : ''}" onclick="toggleCart(${project.id})">
+                    ${isInCart ? '🛒 Eklendi' : '➕ Sepete Ekle'}
+                </button>
+                <button class="json-btn json-btn-detail" onclick="showDetail(${project.id})">
+                    👁️ Detay
+                </button>
+            </div>
+        </div>
+    `;
+    return card;
+}
+
+function toggleCart(projectId) {
+    const index = cart.indexOf(projectId);
+    if (index === -1) {
+        cart.push(projectId);
+    } else {
+        cart.splice(index, 1);
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    renderProjects();
+}
+
+function showDetail(projectId) {
+    const project = allProjects.find(p => p.id === projectId);
+    if (!project) return;
+    
+    modalImage.src = project.image;
+    modalImage.alt = project.title;
+    modalTitle.textContent = project.title;
+    modalDescription.textContent = project.description;
+    
+    modalTechnologies.innerHTML = `
+        <h3 style="color: var(--primary); margin-bottom: 10px; font-family: 'Orbitron', sans-serif;">Kullanılan Teknolojiler:</h3>
+        <div class="json-card-technologies">
+            ${project.technologies.map(tech => `<span class="json-tech-tag">${tech}</span>`).join('')}
+        </div>
+    `;
+    
+    detailModal.classList.add('active');
+}
+
+function closeJsonModal() {
+    if (detailModal) detailModal.classList.remove('active');
+}
+
+if (showAllBtn) {
+    showAllBtn.addEventListener('click', () => {
+        currentFilter = 'all';
+        showAllBtn.classList.add('active');
+        if (showCartBtn) showCartBtn.classList.remove('active');
+        renderProjects();
+    });
+}
+
+if (showCartBtn) {
+    showCartBtn.addEventListener('click', () => {
+        currentFilter = 'cart';
+        showCartBtn.classList.add('active');
+        if (showAllBtn) showAllBtn.classList.remove('active');
+        renderProjects();
+    });
+}
+
+if (closeBtn) {
+    closeBtn.addEventListener('click', closeJsonModal);
+}
+
+if (detailModal) {
+    detailModal.addEventListener('click', (e) => {
+        if (e.target === detailModal) closeJsonModal();
+    });
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeJsonModal();
+});
+
+if (document.getElementById('projectsContainer')) {
+    loadProjects();
+}
