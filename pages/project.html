@@ -28,14 +28,13 @@
                 <span class="pulse-dot"></span>
                 2026
             </div>
+            <button class="theme-toggle" id="themeToggle" title="Tema Değiştir">☀️</button>
             <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
         </div>
-                    <!-- Theme Toggle -->
-            <button class="theme-toggle" id="themeToggle" title="Tema Değiştir">☀️</button>
         <div class="mobile-menu" id="mobileMenu">
             <a href="../index.html" class="nav-link">ANA SAYFA</a>
             <a href="about.html" class="nav-link">HAKKIMDA</a>
@@ -46,6 +45,7 @@
     </nav>
 
     <main class="pages-container">
+        <!-- MEVCUT PROJELER SECTION (KORUNDU) -->
         <section id="page-projects" class="page active">
             <div class="section-container">
                 <div class="section-header">
@@ -124,23 +124,53 @@
                 </div>
             </div>
         </section>
-            <!-- Proje Detay Modalı -->
-    <div class="modal-overlay" id="projectModal">
-        <div class="modal-container">
-            <button class="modal-close">&times;</button>
-            <img src="" alt="Proje" class="modal-image">
-            <div class="modal-content">
-                <h3 class="modal-title"></h3>
-                <p class="modal-category"></p>
-                <p class="modal-description"></p>
-                
-                <h4 class="modal-tools-title">Kullanılan Araçlar</h4>
-                <div class="modal-tools"></div>
-                
-                <div class="modal-color-palette"></div>
+
+        <!-- ===== YENI: JSON PROJELER (4 Mayis Odevi) ===== -->
+        <section class="section-container" style="border-top: 1px solid var(--border); padding-top: 4rem;">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <div class="section-divider"></div>
+            </div>
+            <h2 class="section-title">JSON PROJELER</h2>
+            
+            <nav style="margin-bottom: 2rem; text-align: center;">
+                <button id="showAll" class="json-filter-btn active">Tümü</button>
+                <button id="showCart" class="json-filter-btn">🛒 Sepetim</button>
+            </nav>
+
+            <section id="projectsContainer" class="json-projects-grid">
+                <!-- Kartlar JavaScript ile buraya gelecek -->
+            </section>
+        </section>
+
+        <!-- ===== YENI: JSON Detay Modal ===== -->
+        <div id="detailModal" class="json-modal">
+            <div class="json-modal-content">
+                <span class="json-close-btn">&times;</span>
+                <img id="modalImage" src="" alt="" style="width: 100%; height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 20px;">
+                <h2 id="modalTitle" style="color: var(--primary); margin-bottom: 15px; font-family: 'Orbitron', sans-serif;"></h2>
+                <p id="modalDescription" style="color: var(--text-light); line-height: 1.6; margin-bottom: 20px;"></p>
+                <div id="modalTechnologies"></div>
             </div>
         </div>
-    </div>
+
+        <!-- MEVCUT: Proje Detay Modalı (KORUNDU) -->
+        <div class="modal-overlay" id="projectModal">
+            <div class="modal-container">
+                <button class="modal-close">&times;</button>
+                <img src="" alt="Proje" class="modal-image">
+                <div class="modal-content">
+                    <h3 class="modal-title"></h3>
+                    <p class="modal-category"></p>
+                    <p class="modal-description"></p>
+                    
+                    <h4 class="modal-tools-title">Kullanılan Araçlar</h4>
+                    <div class="modal-tools"></div>
+                    
+                    <div class="modal-color-palette"></div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer class="footer">
