@@ -2316,86 +2316,89 @@ body.light-mode .form-group select {
     color: #1a1a2e;
 }
 /* ============================================
-   PROJE KARTLARI - JSON & LOCALSTORAGE (SEPET)
+   JSON VERI & SEPET SISTEMI (4 Mayis Odevi)
    ============================================ */
 
-.projects-grid {
+.json-projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 25px;
-    padding: 40px;
-    max-width: 1400px;
-    margin: 0 auto;
+    padding: 20px 0;
 }
 
-.project-card {
-    background: rgba(255, 255, 255, 0.05);
+.json-project-card {
+    background: rgba(0, 212, 255, 0.05);
     border-radius: 15px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.project-card:hover {
+.json-project-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2);
+    border-color: var(--primary);
 }
 
-.project-card img {
+.json-project-card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    border-bottom: 1px solid var(--border);
 }
 
-.card-content {
+.json-card-content {
     padding: 20px;
 }
 
-.card-category {
+.json-card-category {
     display: inline-block;
-    background: #00d4ff;
-    color: #1a1a2e;
+    background: var(--primary);
+    color: var(--bg);
     padding: 4px 12px;
     border-radius: 12px;
     font-size: 0.75rem;
     font-weight: bold;
     margin-bottom: 10px;
+    font-family: 'Orbitron', sans-serif;
 }
 
-.card-title {
+.json-card-title {
     font-size: 1.3rem;
     margin-bottom: 10px;
-    color: #fff;
+    color: var(--text);
+    font-family: 'Orbitron', sans-serif;
 }
 
-.card-description {
-    color: #aaa;
+.json-card-description {
+    color: var(--text-light);
     font-size: 0.9rem;
     line-height: 1.5;
     margin-bottom: 15px;
 }
 
-.card-technologies {
+.json-card-technologies {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     margin-bottom: 15px;
 }
 
-.tech-tag {
-    background: rgba(123, 44, 191, 0.3);
-    color: #c77dff;
+.json-tech-tag {
+    background: rgba(255, 0, 85, 0.15);
+    color: var(--red);
     padding: 3px 10px;
     border-radius: 8px;
     font-size: 0.75rem;
+    border: 1px solid rgba(255, 0, 85, 0.3);
 }
 
-.card-actions {
+.json-card-actions {
     display: flex;
     gap: 10px;
 }
 
-.btn {
+.json-btn {
     flex: 1;
     padding: 10px;
     border: none;
@@ -2407,117 +2410,112 @@ body.light-mode .form-group select {
     align-items: center;
     justify-content: center;
     gap: 5px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
 }
 
-/* Sepet Butonu */
-.btn-cart {
-    background: rgba(255, 165, 0, 0.2);
+.json-btn-cart {
+    background: rgba(255, 165, 0, 0.15);
     color: #ffa500;
     border: 1px solid #ffa500;
 }
 
-.btn-cart:hover,
-.btn-cart.active {
+.json-btn-cart:hover,
+.json-btn-cart.active {
     background: #ffa500;
-    color: #1a1a2e;
+    color: var(--bg);
 }
 
-/* Detay Butonu */
-.btn-detail {
-    background: rgba(0, 212, 255, 0.2);
-    color: #00d4ff;
-    border: 1px solid #00d4ff;
+.json-btn-detail {
+    background: rgba(0, 212, 255, 0.15);
+    color: var(--primary);
+    border: 1px solid var(--primary);
 }
 
-.btn-detail:hover {
-    background: #00d4ff;
-    color: #1a1a2e;
+.json-btn-detail:hover {
+    background: var(--primary);
+    color: var(--bg);
 }
 
 /* Modal */
-.modal {
+.json-modal {
     display: none;
     position: fixed;
-    z-index: 1000;
+    z-index: 10000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
     justify-content: center;
     align-items: center;
     padding: 20px;
 }
 
-.modal.active {
+.json-modal.active {
     display: flex;
 }
 
-.modal-content {
-    background: #1a1a2e;
+.json-modal-content {
+    background: linear-gradient(135deg, var(--bg), var(--bg-dark));
     border-radius: 15px;
     max-width: 600px;
     width: 100%;
     padding: 30px;
     position: relative;
-    border: 1px solid rgba(0, 212, 255, 0.3);
+    border: 2px solid var(--primary);
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.3);
 }
 
-.modal-content img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-.modal-content h2 {
-    color: #00d4ff;
-    margin-bottom: 15px;
-}
-
-.modal-content p {
-    color: #ccc;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-.close-btn {
+.json-close-btn {
     position: absolute;
     top: 15px;
     right: 20px;
     font-size: 2rem;
     cursor: pointer;
-    color: #aaa;
+    color: var(--text-light);
     transition: color 0.3s;
+    z-index: 10;
 }
 
-.close-btn:hover {
-    color: #ff0064;
+.json-close-btn:hover {
+    color: var(--red);
 }
 
-.empty-message {
+.json-empty-message {
     text-align: center;
     grid-column: 1 / -1;
     padding: 60px;
-    color: #888;
+    color: var(--text-light);
     font-size: 1.2rem;
+    border: 1px dashed var(--border);
+    border-radius: 15px;
 }
 
-.filter-btn {
+.json-filter-btn {
     padding: 10px 25px;
-    border: 2px solid #00d4ff;
+    border: 2px solid var(--primary);
     background: transparent;
-    color: #00d4ff;
+    color: var(--primary);
     border-radius: 25px;
     cursor: pointer;
     font-size: 1rem;
     transition: all 0.3s ease;
     margin: 5px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
 }
 
-.filter-btn:hover,
-.filter-btn.active {
-    background: #00d4ff;
-    color: #1a1a2e;
+.json-filter-btn:hover,
+.json-filter-btn.active {
+    background: var(--primary);
+    color: var(--bg);
+    box-shadow: 0 0 20px var(--primary);
+}
+
+@media (max-width: 768px) {
+    .json-projects-grid {
+        grid-template-columns: 1fr;
+    }
 }
