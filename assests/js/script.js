@@ -547,3 +547,47 @@ document.addEventListener('DOMContentLoaded', function() {
     initFormValidation();
     console.log('Portfolio 2026 - Interactive Features Loaded! ✓');
 });
+// ============================================
+// JSON VERI OKUMA & SEPET SISTEMI (4 Mayis Odevi)
+// ============================================
+
+let allProjects = [];
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let currentFilter = 'all';
+
+const projectsContainer = document.getElementById('projectsContainer');
+const showAllBtn = document.getElementById('showAll');
+const showCartBtn = document.getElementById('showCart');
+const detailModal = document.getElementById('detailModal');
+const closeBtn = document.querySelector('.json-close-btn');
+const modalImage = document.getElementById('modalImage');
+const modalTitle = document.getElementById('modalTitle');
+const modalDescription = document.getElementById('modalDescription');
+const modalTechnologies = document.getElementById('modalTechnologies');
+
+async function loadProjects() {
+    try {
+        const response = await fetch('../data/projects.json');
+        allProjects = await response.json();
+        renderProjects();
+    } catch (error) {
+        console.error('Veri yüklenirken hata:', error);
+        if (projectsContainer) {
+            projectsContainer.innerHTML = '<p class="json-empty-message">Veriler yüklenemedi.</p>';
+        }
+    }
+}
+
+function renderProjects() {
+    if (!projectsContainer) return;
+    projectsContainer.innerHTML = '';
+    
+    let projectsToShow = allProjects;
+    if (currentFilter === 'cart') {
+        projectsToShow = allProjects.filter(p => cart.includes(p.id));
+    }
+    
+    if (projectsToShow.length === 0) {
+        projectsContainer.innerHTML = `
+            <div class="json-empty-message">
+                ${currentFilter === 'cart' ? 'Sepetiniz boş. 🛒' :
