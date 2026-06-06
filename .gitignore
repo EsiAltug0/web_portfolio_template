@@ -1,0 +1,39 @@
+# Sistem dosyaları
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE/Editör dosyaları
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Bağımlılıklar
+node_modules/
+vendor/
+
+# Çevre değişkenleri
+.env
+.env.local
+
+# Log dosyaları
+*.log
+logs/
+
+# Geçici dosyalar
+tmp/
+temp/
+cache/
+
+# Yüklenen dosyalar (eğer varsa)
+uploads/
+
+# Veritabanı yedekleri
+*.sql.gz
+*.sql.zip
+
+# OS dosyaları
+*.swp
+*.swo
+*~
