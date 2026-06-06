@@ -1,133 +1,81 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esma | Portfolio 2026</title>
-    <meta name="description" content="Esma - Bilgisayar Programcılığı öğrencisi, dijital tasarım ve yazılım geliştirme portfolyosu">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assests/css/style.css">
-</head>
-<body>
-    <!-- Scanline overlay -->
-    <div class="scanline-overlay"></div>
+<?php
+// ============================================
+// ANA SAYFA
+// Portfolio ana sayfası - Hero section
+// ============================================
+$pageTitle = 'Portfolio 2026';
+$basePath = '';
+$navBasePath = '';
 
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="navbar-container">
-            <a href="index.html" class="navbar-logo" style="text-decoration: none;">
-                E<span class="logo-dot">.</span>
-            </a>
+require_once __DIR__ . '/includes/header.php';
+?>
 
-            <!-- Desktop menu -->
-            <div class="nav-menu" id="navMenu">
-                <a href="index.html" class="nav-link">ANA SAYFA</a>
-                <a href="pages/about.html" class="nav-link">HAKKIMDA</a>
-                <a href="pages/project.html" class="nav-link">PROJELER</a>
-                <a href="pages/contact.html" class="nav-link">İLETİŞİM</a>
-                <a href="pages/form.html" class="nav-link">FORM</a>
-            </div>
+<?php include __DIR__ . '/includes/navbar.php'; ?>
 
-            <!-- Year badge -->
-            <div class="year-badge">
-                <span class="pulse-dot"></span>
-                2026
-            </div>
-            <!-- Theme Toggle -->
-            <button class="theme-toggle" id="themeToggle" title="Tema Değiştir">☀️</button>
-            <!-- Mobile menu button -->
-            <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-
-        <!-- Mobile menu -->
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="index.html" class="nav-link">ANA SAYFA</a>
-            <a href="pages/about.html" class="nav-link">HAKKIMDA</a>
-            <a href="pages/project.html" class="nav-link">PROJELER</a>
-            <a href="pages/contact.html" class="nav-link">İLETİŞİM</a>
-            <a href="pages/form.html" class="nav-link">FORM</a>
-        </div>
-    </nav>
-
-    <!-- Pages Container -->
-    <main class="pages-container">
-        <!-- PAGE: HOME -->
-        <section id="page-home" class="page active">
-            <div class="hero-section">
-                <div class="hero-bg"></div>
-                <div class="hero-overlay"></div>
-                <div class="hero-grid"></div>
-                
-                <div class="hero-content">
-                    <div class="hero-left">
-                        <div class="hero-tag animate-fade-in-up">
-                            <span class="tag-text">PORTFOLIO 2026</span>
-                            <div class="tag-line"></div>
-                        </div>
-
-                        <h1 class="hero-title glitch-text" data-text="PORTFOLIO">PORTFOLIO</h1>
-                        <h2 class="hero-name">ESMA</h2>
-
-                        <div class="hero-role">
-                            <span class="role-dot"></span>
-                            <span>Tasarım & Yazılım Geliştirici</span>
-                        </div>
-
-                        <nav class="hero-menu">
-                            <a href="pages/about.html" class="hero-menu-item" style="text-decoration: none; color: inherit;">
-                                <span class="menu-line"></span>
-                                <span class="menu-text">HAKKIMDA</span>
-                            </a>
-                            <a href="pages/project.html" class="hero-menu-item" style="text-decoration: none; color: inherit;">
-                                <span class="menu-line"></span>
-                                <span class="menu-text">PROJELER</span>
-                            </a>
-                            <a href="pages/contact.html" class="hero-menu-item" style="text-decoration: none; color: inherit;">
-                                <span class="menu-line"></span>
-                                <span class="menu-text">İLETİŞİM</span>
-                            </a>
-                        </nav>
+<!-- Pages Container -->
+<main class="pages-container">
+    <!-- PAGE: HOME -->
+    <section id="page-home" class="page active">
+        <div class="hero-section">
+            <div class="hero-bg"></div>
+            <div class="hero-overlay"></div>
+            <div class="hero-grid"></div>
+            
+            <div class="hero-content">
+                <div class="hero-left">
+                    <div class="hero-tag animate-fade-in-up">
+                        <span class="tag-text">PORTFOLIO 2026</span>
+                        <div class="tag-line"></div>
                     </div>
 
-                    <div class="hero-right">
-                        <div class="rotating-rings">
-                            <div class="ring ring-1"></div>
-                            <div class="ring ring-2"></div>
-                            <div class="center-circle"><span>E</span></div>
-                            <div class="floating-dot dot-1"></div>
-                            <div class="floating-dot dot-2"></div>
-                            <div class="floating-dot dot-3"></div>
-                            <div class="floating-dot dot-4"></div>
-                            <div class="floating-dot dot-5"></div>
-                            <div class="floating-dot dot-6"></div>
-                        </div>
+                    <h1 class="hero-title glitch-text" data-text="PORTFOLIO">PORTFOLIO</h1>
+                    <h2 class="hero-name">ESMA</h2>
+
+                    <div class="hero-role">
+                        <span class="role-dot"></span>
+                        <span>Tasarım & Yazılım Geliştirici</span>
+                    </div>
+
+                    <nav class="hero-menu">
+                        <a href="pages/about.php" class="hero-menu-item" style="text-decoration: none; color: inherit;">
+                            <span class="menu-line"></span>
+                            <span class="menu-text">HAKKIMDA</span>
+                        </a>
+                        <a href="pages/projects.php" class="hero-menu-item" style="text-decoration: none; color: inherit;">
+                            <span class="menu-line"></span>
+                            <span class="menu-text">PROJELER</span>
+                        </a>
+                        <a href="pages/contact.php" class="hero-menu-item" style="text-decoration: none; color: inherit;">
+                            <span class="menu-line"></span>
+                            <span class="menu-text">İLETİŞİM</span>
+                        </a>
+                    </nav>
+                </div>
+
+                <div class="hero-right">
+                    <div class="rotating-rings">
+                        <div class="ring ring-1"></div>
+                        <div class="ring ring-2"></div>
+                        <div class="center-circle"><span>E</span></div>
+                        <div class="floating-dot dot-1"></div>
+                        <div class="floating-dot dot-2"></div>
+                        <div class="floating-dot dot-3"></div>
+                        <div class="floating-dot dot-4"></div>
+                        <div class="floating-dot dot-5"></div>
+                        <div class="floating-dot dot-6"></div>
                     </div>
                 </div>
-
-                <div class="scroll-indicator">
-                    <span>SCROLL</span>
-                    <div class="scroll-line"></div>
-                </div>
             </div>
-        </section>
-    </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <a href="index.html" class="footer-logo" style="text-decoration: none;">E<span class="logo-dot">.</span></a>
-        <p class="footer-text">© 2026 Esma — Tüm hakları saklıdır</p>
-        <div class="footer-location">
-            <span class="location-dot"></span>
-            <span>Kırşehir, TR</span>
+            <div class="scroll-indicator">
+                <span>SCROLL</span>
+                <div class="scroll-line"></div>
+            </div>
         </div>
-    </footer>
+    </section>
+</main>
 
-    <script src="assests/js/script.js"></script>
-</body>
-</html>
+<?php 
+$footerBasePath = '';
+include __DIR__ . '/includes/footer.php'; 
+?>
