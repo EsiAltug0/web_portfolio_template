@@ -1,6 +1,6 @@
 <?php
 $servername = "localhost";
-$username = "esma"; // Senin belirlediğin kullanıcı adı
+$username = "esmaa"; // Senin belirlediğin kullanıcı adı
 $password = "123321"; // Senin belirlediğin şifre
 $dbname = "portfolio_db";
 
