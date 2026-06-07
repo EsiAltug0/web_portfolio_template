@@ -1,7 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "esmaa"; // Senin belirlediğin kullanıcı adı
-$password = "123321"; // Senin belirlediğin şifre
+$username = "esma";
+$password = "123321";
+ // Senin belirlediğin şifre
 $dbname = "portfolio_db";
 
 // Veritabanı bağlantısı oluştur
