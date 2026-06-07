@@ -2313,3 +2313,58 @@ body.light-mode .form-group select {
         grid-template-columns: 1fr;
     }
 }
+
+/* ============================================
+   JSON PROJELER GRID & CARDS (Final Ödevi)
+   ============================================ */
+.json-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.json-project-card {
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    background: var(--bg-secondary);
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.json-project-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 255, 255, 0.15);
+}
+
+.json-filter-btn {
+    padding: 0.45rem 1rem;
+    border: 2px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    border-radius: 6px;
+    transition: all 0.25s ease;
+    font-size: 0.85rem;
+}
+
+.json-filter-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.json-filter-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--bg);
+    font-weight: 600;
+}
+
+/* JSON arama input focus */
+#jsonSearchInput:focus {
+    outline: none;
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.25);
+}
