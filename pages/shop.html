@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Măğaza | Esma Portfolio 2026</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assests/css/style.css">
+    <style>
+        .shop-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border);
+            background: var(--bg-secondary);
+            color: var(--text);
+            font-family: 'Space Grotesk', sans-serif;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+
+        .filter-section {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--border);
+            background: transparent;
+            color: var(--text);
+            cursor: pointer;
+            font-family: 'Space Grotesk', sans-serif;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: var(--bg);
+        }
+
+        .sort-section {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .sort-section label {
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .sort-section select {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--border);
+            background: var(--bg-secondary);
+            color: var(--text);
+            font-family: 'Space Grotesk', sans-serif;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sort-section select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: var(--bg-secondary);
+        }
+
+        .product-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+        }
+
+        .product-image {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .fav-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .fav-btn:hover {
+            background: rgba(0, 255, 255, 0.8);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-category {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(0, 255, 255, 0.1);
+            color: var(--primary);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+            color: var(--text);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .product-description {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .product-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tool-tag {
+            padding: 0.25rem 0.6rem;
+            background: var(--bg);
+            color: var(--primary);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            border: 1px solid var(--primary);
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .add-to-cart-btn {
+            padding: 0.5rem 1rem;
+            background: var(--primary);
+            color: var(--bg);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .add-to-cart-btn:hover {
+            background: var(--primary-light);
+            transform: scale(1.05);
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .shop-controls {
+                flex-direction: column;
+            }
+
+            .search-box {
+                min-width: 100%;
+            }
+
+            .filter-section {
+                width: 100%;
+            }
+
+            .sort-section {
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scanline-overlay"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="../index.html" class="navbar-logo" style="text-decoration: none;">
+                E<span class="logo-dot">.</span>
+            </a>
+            <div class="nav-menu" id="navMenu">
+                <a href="../index.html" class="nav-link">ANA SAYFA</a>
+                <a href="about.html" class="nav-link">HAKKIMDA</a>
+                <a href="project.html" class="nav-link">PROJELER</a>
+                <a href="shop.html" class="nav-link">MAĞAZA</a>
+                <a href="contact.html" class="nav-link">İLETİŞİM</a>
+                <a href="form.html" class="nav-link">FORM</a>
+            </div>
+            <div class="year-badge">
+                <span class="pulse-dot"></span>
+                2026
+            </div>
+            <button class="theme-toggle" id="themeToggle" title="Tema Değiştir">☀️</button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="../index.html" class="nav-link">ANA SAYFA</a>
+            <a href="about.html" class="nav-link">HAKKIMDA</a>
+            <a href="project.html" class="nav-link">PROJELER</a>
+            <a href="shop.html" class="nav-link">MAĞAZA</a>
+            <a href="contact.html" class="nav-link">İLETİŞİM</a>
+            <a href="form.html" class="nav-link">FORM</a>
+        </div>
+    </nav>
+
+    <main class="pages-container">
+        <section id="page-shop" class="page active">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-number">07</span>
+                    <div class="section-divider"></div>
+                </div>
+                <h2 class="section-title">MAĞAZA</h2>
+
+                <!-- Kontrol Paneli -->
+                <div class="shop-controls">
+                    <!-- Arama Kutusu -->
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Ürün ara...">
+                    </div>
+
+                    <!-- Kategori Filtreleme -->
+                    <div class="filter-section">
+                        <button class="filter-btn active" data-category="all">Tümü</button>
+                        <button class="filter-btn" data-category="grafik">Grafik</button>
+                        <button class="filter-btn" data-category="sosyal-medya">Sosyal Medya</button>
+                        <button class="filter-btn" data-category="web">Web</button>
+                        <button class="filter-btn" data-category="animasyon">Animasyon</button>
+                    </div>
+
+                    <!-- Sıralama -->
+                    <div class="sort-section">
+                        <label for="sortSelect">Sırala:</label>
+                        <select id="sortSelect">
+                            <option value="">Varsayılan</option>
+                            <option value="price-asc">Fiyat (Düşükten Yükseğe)</option>
+                            <option value="price-desc">Fiyat (Yüksekten Düşüğe)</option>
+                            <option value="name-asc">İsim (A-Z)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Ürünler Grid -->
+                <div id="productsGrid" class="products-grid">
+                    <p class="no-data">Ürünler yükleniyor...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="../index.html" class="footer-logo" style="text-decoration: none;">E<span class="logo-dot">.</span></a>
+        <p class="footer-text">© 2026 Esma — Tüm hakları saklıdır</p>
+        <div class="footer-location">
+            <span class="location-dot"></span>
+            <span>Kırşehir, TR</span>
+        </div>
+    </footer>
+
+    <script src="../assests/js/script.js"></script>
+    <script src="../assests/js/shop.js"></script>
+</body>
+</html>
