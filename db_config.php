@@ -1,14 +1,14 @@
 <?php
- = "localhost";
- = "portfolio_user";
- = "password";
- = "portfolio_db";
+$servername = "localhost";
+$username = "esma"; // Senin belirlediğin kullanıcı adı
+$password = "123321"; // Senin belirlediğin şifre
+$dbname = "portfolio_db";
 
 // Veritabanı bağlantısı oluştur
- = new mysqli(, , , );
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 // Bağlantıyı kontrol et
-if (->connect_error) {
-    die("Veritabanı bağlantısı başarısız: " . ->connect_error);
+if ($conn->connect_error) {
+    die("Veritabanı bağlantısı başarısız: " . $conn->connect_error);
 }
 ?>
