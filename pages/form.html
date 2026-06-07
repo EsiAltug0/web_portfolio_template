@@ -22,6 +22,7 @@
                 <a href="../index.html" class="nav-link">ANA SAYFA</a>
                 <a href="about.html" class="nav-link">HAKKIMDA</a>
                 <a href="project.html" class="nav-link">PROJELER</a>
+                <a href="shop.html" class="nav-link">MAĞAZA</a>
                 <a href="contact.html" class="nav-link">İLETİŞİM</a>
                 <a href="form.html" class="nav-link">FORM</a>
             </div>
@@ -40,6 +41,7 @@
             <a href="../index.html" class="nav-link">ANA SAYFA</a>
             <a href="about.html" class="nav-link">HAKKIMDA</a>
             <a href="project.html" class="nav-link">PROJELER</a>
+            <a href="shop.html" class="nav-link">MAĞAZA</a>
             <a href="contact.html" class="nav-link">İLETİŞİM</a>
             <a href="form.html" class="nav-link">FORM</a>
         </div>
@@ -150,7 +152,7 @@
                         </div>
 
                         <button type="submit" class="submit-btn">GÖNDER</button>
-                        <p class="form-note">// Form doğrulama aktif — veriler localStorage'a kaydediliyor</p>
+                        <p class="form-note">// Form doğrulama aktif — veriler veritabanına kaydediliyor</p>
                     </form>
 
                     <div id="successMessage" class="success-message" style="display: none;">
@@ -167,9 +169,9 @@
                         <span class="section-number">06</span>
                         <div class="section-divider"></div>
                     </div>
-                    <h3 class="section-title">GÖNDERİLEN MESAJLAR</h3>
+                    <h3 class="section-title">GÖNDERİLEN MESAJLAR <span style="font-size:0.8rem; color:var(--text-light);">(Veritabanından)</span></h3>
                     <div id="submissionsList">
-                        <p class="no-data">Henüz gönderilen mesaj bulunmamaktadır.</p>
+                        <p class="no-data">Mesajlar yükleniyor...</p>
                     </div>
                 </div>
             </div>
@@ -187,7 +189,63 @@
 
     <script src="../assests/js/script.js"></script>
     <script>
+        // ============================================
+        // İLETİŞİM FORMU - VERİTABANINA KAYDET
+        // ============================================
+        async function loadMessages() {
+            try {
+                const res = await fetch('../messages.php');
+                const data = await res.json();
+                const list = document.getElementById('submissionsList');
+                if (!data.success || !data.data.length) {
+                    list.innerHTML = '<p class="no-data">Henüz gönderilen mesaj bulunmamaktadır.</p>';
+                    return;
+                }
+                list.innerHTML = data.data.map(m => `
+                    <div style="border:1px solid var(--border); border-radius:8px; padding:1rem; margin-bottom:1rem; background:var(--bg-secondary);">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem;">
+                            <strong style="color:var(--primary);">${m.name}</strong>
+                            <span style="font-size:0.8rem; color:var(--text-light);">${new Date(m.created_at).toLocaleString('tr-TR')}</span>
+                        </div>
+                        <p style="font-size:0.85rem; color:var(--text-light); margin:0 0 0.3rem;"><strong>Konu:</strong> ${m.subject} <span style="margin-left:0.5rem; padding:0.1rem 0.4rem; background:rgba(0,255,255,0.1); color:var(--primary); border-radius:3px; font-size:0.75rem;">${m.type}</span></p>
+                        <p style="font-size:0.9rem; margin:0;">${m.message}</p>
+                    </div>
+                `).join('');
+            } catch(e) {
+                document.getElementById('submissionsList').innerHTML = '<p class="no-data">Mesajlar yüklenemedi. PHP sunucusu çalışıyor mu?</p>';
+            }
+        }
+
+        // İletişim formunu veritabanına gönder
+        const contactFormEl = document.getElementById('contactForm');
+        if (contactFormEl) {
+            contactFormEl.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const btn = this.querySelector('button[type=submit]');
+                btn.disabled = true; btn.textContent = 'GÖNDERİLİYOR...';
+                try {
+                    const res = await fetch('../messages.php', {
+                        method: 'POST',
+                        body: new FormData(this)
+                    });
+                    const data = await res.json();
+                    if (data.success) {
+                        this.style.display = 'none';
+                        document.getElementById('successMessage').style.display = 'block';
+                        loadMessages(); // Listeyi güncelle
+                    } else {
+                        alert(data.message);
+                        btn.disabled = false; btn.textContent = 'GÖNDER';
+                    }
+                } catch(err) {
+                    alert('Bağlantı hatası. PHP sunucusu çalışıyor mu?');
+                    btn.disabled = false; btn.textContent = 'GÖNDER';
+                }
+            });
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
+            loadMessages();
             const registerFormContainer = document.getElementById("registerFormContainer");
             const loginFormContainer = document.getElementById("loginFormContainer");
             const showLoginLink = document.getElementById("showLogin");
@@ -211,40 +269,48 @@
 
             registerForm.addEventListener("submit", function(e) {
                 e.preventDefault();
+                const btn = registerForm.querySelector("button[type=submit]");
+                btn.disabled = true; btn.textContent = "Kaydediliyor...";
                 fetch(registerForm.action, {
                     method: registerForm.method,
                     body: new FormData(registerForm)
                 })
-                .then(response => response.text())
+                .then(r => r.json())
                 .then(data => {
                     registerMessage.style.display = "block";
-                    registerMessage.innerHTML = data;
-                    registerForm.reset();
+                    registerMessage.style.color = data.success ? "var(--primary)" : "#ff4444";
+                    registerMessage.innerHTML = data.message;
+                    if (data.success) registerForm.reset();
                 })
-                .catch(error => {
-                    console.error("Error:", error);
+                .catch(() => {
                     registerMessage.style.display = "block";
-                    registerMessage.innerHTML = "Kayıt sırasında bir hata oluştu.";
-                });
+                    registerMessage.style.color = "#ff4444";
+                    registerMessage.innerHTML = "Bağlantı hatası. PHP sunucusu çalışıyor mu?";
+                })
+                .finally(() => { btn.disabled = false; btn.textContent = "KAYIT OL"; });
             });
 
             loginForm.addEventListener("submit", function(e) {
                 e.preventDefault();
+                const btn = loginForm.querySelector("button[type=submit]");
+                btn.disabled = true; btn.textContent = "Giriş yapılıyor...";
                 fetch(loginForm.action, {
                     method: loginForm.method,
                     body: new FormData(loginForm)
                 })
-                .then(response => response.text())
+                .then(r => r.json())
                 .then(data => {
                     loginMessage.style.display = "block";
-                    loginMessage.innerHTML = data;
-                    loginForm.reset();
+                    loginMessage.style.color = data.success ? "var(--primary)" : "#ff4444";
+                    loginMessage.innerHTML = data.message;
+                    if (data.success) loginForm.reset();
                 })
-                .catch(error => {
-                    console.error("Error:", error);
+                .catch(() => {
                     loginMessage.style.display = "block";
-                    loginMessage.innerHTML = "Giriş sırasında bir hata oluştu.";
-                });
+                    loginMessage.style.color = "#ff4444";
+                    loginMessage.innerHTML = "Bağlantı hatası. PHP sunucusu çalışıyor mu?";
+                })
+                .finally(() => { btn.disabled = false; btn.textContent = "GİRİŞ YAP"; });
             });
         });
     </script>

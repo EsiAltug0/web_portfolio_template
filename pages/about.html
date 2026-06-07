@@ -22,6 +22,7 @@
                 <a href="../index.html" class="nav-link">ANA SAYFA</a>
                 <a href="about.html" class="nav-link">HAKKIMDA</a>
                 <a href="project.html" class="nav-link">PROJELER</a>
+                <a href="shop.html" class="nav-link">MAĞAZA</a>
                 <a href="contact.html" class="nav-link">İLETİŞİM</a>
                 <a href="form.html" class="nav-link">FORM</a>
             </div>
@@ -41,6 +42,7 @@
             <a href="../index.html" class="nav-link">ANA SAYFA</a>
             <a href="about.html" class="nav-link">HAKKIMDA</a>
             <a href="project.html" class="nav-link">PROJELER</a>
+            <a href="shop.html" class="nav-link">MAĞAZA</a>
             <a href="contact.html" class="nav-link">İLETİŞİM</a>
             <a href="form.html" class="nav-link">FORM</a>
         </div>
@@ -103,15 +105,18 @@
             <!-- YENI: Hava Durumu Widget'ı -->
             <div class="weather-widget" id="weatherWidget" style="margin-top: 2rem; padding: 1.5rem; border: 2px solid var(--border); border-radius: 12px; background: var(--bg-secondary);">
                 <h3 style="margin-bottom: 1rem; color: var(--primary); font-family: 'Orbitron', sans-serif;">Kırşehir Hava Durumu</h3>
-                <div id="weatherContent" style="display: flex; align-items: center; gap: 2rem;">
-                    <div style="flex: 1;">
-                        <p id="weatherTemp" style="font-size: 2rem; color: var(--primary); font-weight: bold;">--C</p>
-                        <p id="weatherDesc" style="color: var(--text-light);">Yükleniyor...</p>
+                <div id="weatherContent" style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 150px;">
+                        <p id="weatherTemp" style="font-size: 2.5rem; color: var(--primary); font-weight: bold; margin: 0;">--°C</p>
+                        <p id="weatherDesc" style="color: var(--text-light); margin: 0.3rem 0;">Yükleniyor...</p>
+                        <p id="weatherFeels" style="font-size:0.85rem; color: var(--text-light); margin:0;"></p>
                     </div>
-                    <div style="text-align: right;">
-                        <p><span style="color: var(--text-light);">Nem:</span> <span id="weatherHumidity" style="color: var(--primary);">--%</span></p>
-                        <p><span style="color: var(--text-light);">Rüzgar:</span> <span id="weatherWind" style="color: var(--primary);">-- km/s</span></p>
-                        <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 0.5rem;" id="weatherTime"></p>
+                    <div style="text-align: right; min-width: 160px;">
+                        <p style="margin:0.2rem 0;"><span style="color: var(--text-light);">💧 Nem:</span> <span id="weatherHumidity" style="color: var(--primary);">--%</span></p>
+                        <p style="margin:0.2rem 0;"><span style="color: var(--text-light);">💨 Rüzgar:</span> <span id="weatherWind" style="color: var(--primary);">-- km/s</span></p>
+                        <p style="margin:0.2rem 0;"><span style="color: var(--text-light);">🌡️ Basınç:</span> <span id="weatherPressure" style="color: var(--primary);">-- hPa</span></p>
+                        <p style="font-size: 0.75rem; color: var(--text-light); margin-top: 0.5rem;" id="weatherTime"></p>
+                        <span id="weatherSource" style="font-size:0.7rem; padding: 0.2rem 0.5rem; border-radius:4px; background: rgba(0,255,255,0.1); color: var(--primary);"></span>
                     </div>
                 </div>
             </div>
@@ -230,11 +235,20 @@
                     document.getElementById('weatherDesc').textContent = data.description;
                     document.getElementById('weatherHumidity').textContent = data.humidity + '%';
                     document.getElementById('weatherWind').textContent = data.wind_speed + ' km/s';
-                    document.getElementById('weatherTime').textContent = 'Guncelleme: ' + data.timestamp;
+                    document.getElementById('weatherPressure').textContent = (data.pressure || '--') + ' hPa';
+                    if (data.feels_like) {
+                        document.getElementById('weatherFeels').textContent = 'Hissedilen: ' + data.feels_like + '°C';
+                    }
+                    const ts = new Date(data.timestamp);
+                    document.getElementById('weatherTime').textContent = 'Güncelleme: ' + ts.toLocaleTimeString('tr-TR');
+                    const srcEl = document.getElementById('weatherSource');
+                    if (srcEl) {
+                        srcEl.textContent = data.source === 'live' ? '🟢 Canlı Veri' : '🟡 Demo Veri';
+                    }
                 }
             } catch (error) {
                 console.error('Hava durumu yuklenirken hata:', error);
-                document.getElementById('weatherContent').innerHTML = '<p style="color: var(--text-light);">Hava durumu verisi alinamadi</p>';
+                document.getElementById('weatherContent').innerHTML = '<p style="color: var(--text-light);">❌ Hava durumu verisi alınamadı.</p>';
             }
         }
         
