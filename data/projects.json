@@ -1,1 +1,50 @@
-
+[
+  {
+    "id": 1,
+    "title": "E-Ticaret Sitesi",
+    "description": "React ve Node.js ile geliştirilmiş tam kapsamlı e-ticaret platformu. Sepet, ödeme ve kullanıcı yönetimi özellikleri içerir.",
+    "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400",
+    "category": "Web Geliştirme",
+    "technologies": ["React", "Node.js", "MongoDB"]
+  },
+  {
+    "id": 2,
+    "title": "Mobil Fitness Uygulaması",
+    "description": "Flutter ile geliştirilmiş kişiselleştirilmiş antrenman ve beslenme takip uygulaması.",
+    "image": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400",
+    "category": "Mobil Uygulama",
+    "technologies": ["Flutter", "Firebase", "Dart"]
+  },
+  {
+    "id": 3,
+    "title": "Veri Analiz Paneli",
+    "description": "Python ve Streamlit ile oluşturulmuş interaktif veri görselleştirme ve analiz dashboard'u.",
+    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400",
+    "category": "Veri Bilimi",
+    "technologies": ["Python", "Pandas", "Streamlit"]
+  },
+  {
+    "id": 4,
+    "title": "Blog Platformu",
+    "description": "PHP ve MySQL ile geliştirilmiş içerik yönetim sistemine sahip blog platformu.",
+    "image": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=400",
+    "category": "Web Geliştirme",
+    "technologies": ["PHP", "MySQL", "Bootstrap"]
+  },
+  {
+    "id": 5,
+    "title": "Hava Durumu Uygulaması",
+    "description": "OpenWeatherMap API entegrasyonlu gerçek zamanlı hava durumu takip uygulaması.",
+    "image": "https://images.unsplash.com/photo-1592210454359-9043f067919b?w=400",
+    "category": "Web Geliştirme",
+    "technologies": ["JavaScript", "API", "CSS"]
+  },
+  {
+    "id": 6,
+    "title": "Yapay Zeka Chatbot",
+    "description": "NLP teknolojileri kullanılarak geliştirilmiş akıllı müşteri destek chatbot'u.",
+    "image": "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=400",
+    "category": "Yapay Zeka",
+    "technologies": ["Python", "TensorFlow", "NLP"]
+  }
+]
