@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ödeme | Esma Portfolio 2026</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assests/css/style.css">
+    <style>
+        .checkout-layout { display: grid; grid-template-columns: 1fr 360px; gap: 2rem; margin-top: 2rem; }
+        @media(max-width:900px){ .checkout-layout { grid-template-columns: 1fr; } }
+        .checkout-form-box { background: var(--bg-secondary); border: 2px solid var(--border); border-radius: 12px; padding: 2rem; }
+        .checkout-form-box h3 { font-family: 'Orbitron', sans-serif; color: var(--primary); margin-bottom: 1.5rem; font-size: 0.95rem; letter-spacing: 2px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        @media(max-width:600px){ .form-row { grid-template-columns: 1fr; } }
+        .card-icons { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+        .card-icon { padding: 0.3rem 0.8rem; border: 1px solid var(--border); border-radius: 4px; font-size: 0.75rem; color: var(--text-light); }
+        .order-summary { background: var(--bg-secondary); border: 2px solid var(--border); border-radius: 12px; padding: 1.5rem; position: sticky; top: 90px; height: fit-content; }
+        .order-summary h3 { font-family: 'Orbitron', sans-serif; color: var(--primary); margin-bottom: 1.5rem; font-size: 0.95rem; letter-spacing: 2px; }
+        .order-item { display: flex; justify-content: space-between; align-items: center; padding: 0.7rem 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; gap: 1rem; }
+        .order-item-name { flex: 1; color: var(--text); }
+        .order-item-price { color: var(--primary); font-weight: bold; white-space: nowrap; }
+        .order-total { display: flex; justify-content: space-between; padding: 1rem 0 0; font-size: 1.2rem; font-weight: bold; font-family: 'Orbitron', sans-serif; color: var(--primary); }
+        .pay-btn { width: 100%; padding: 1rem; background: var(--primary); color: var(--bg); border: none; border-radius: 8px; font-family: 'Orbitron', sans-serif; font-size: 0.9rem; cursor: pointer; margin-top: 1.5rem; transition: all 0.3s; font-weight: 700; }
+        .pay-btn:hover { opacity: 0.85; transform: translateY(-2px); }
+        .security-note { text-align: center; font-size: 0.8rem; color: var(--text-light); margin-top: 1rem; }
+        .success-overlay { display: none; text-align: center; padding: 3rem 2rem; }
+        .success-overlay.active { display: block; }
+        .success-overlay .big-check { font-size: 5rem; margin-bottom: 1rem; }
+        .success-overlay h2 { font-family: 'Orbitron', sans-serif; color: var(--primary); margin-bottom: 1rem; }
+        .success-overlay p { color: var(--text-light); margin-bottom: 0.5rem; }
+        .input-card { font-family: 'Space Mono', monospace; letter-spacing: 2px; }
+    </style>
+</head>
+<body>
+    <div class="scanline-overlay"></div>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="../index.html" class="navbar-logo" style="text-decoration:none;">E<span class="logo-dot">.</span></a>
+            <div class="nav-menu" id="navMenu">
+                <a href="../index.html" class="nav-link">ANA SAYFA</a>
+                <a href="shop.html" class="nav-link">MAĞAZA</a>
+                <a href="cart.html" class="nav-link">SEPETİM</a>
+                <div id="navAuthArea"></div>
+            </div>
+            <div class="year-badge"><span class="pulse-dot"></span>2026</div>
+            <button class="theme-toggle" id="themeToggle" title="Tema Değiştir">☀️</button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="../index.html" class="nav-link">ANA SAYFA</a>
+            <a href="shop.html" class="nav-link">MAĞAZA</a>
+            <a href="cart.html" class="nav-link">SEPETİM</a>
+        </div>
+    </nav>
+
+    <main class="pages-container">
+        <section id="page-checkout" class="page active">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-number">09</span>
+                    <div class="section-divider"></div>
+                </div>
+                <h2 class="section-title">ÖDEME</h2>
+
+                <div id="checkoutMain">
+                    <div class="checkout-layout">
+                        <!-- Sol: Form -->
+                        <div>
+                            <div class="checkout-form-box" style="margin-bottom:1.5rem;">
+                                <h3>// KİŞİSEL BİLGİLER</h3>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Ad *</label>
+                                        <input type="text" id="ck_name" placeholder="Adınız" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Soyad *</label>
+                                        <input type="text" id="ck_surname" placeholder="Soyadınız" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>E-Posta *</label>
+                                    <input type="email" id="ck_email" placeholder="E-posta adresiniz" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Telefon</label>
+                                    <input type="tel" id="ck_phone" placeholder="05xx xxx xx xx">
+                                </div>
+                            </div>
+
+                            <div class="checkout-form-box">
+                                <h3>// KART BİLGİLERİ</h3>
+                                <div class="card-icons">
+                                    <span class="card-icon">VISA</span>
+                                    <span class="card-icon">MC</span>
+                                    <span class="card-icon">TROY</span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Kart Üzerindeki İsim *</label>
+                                    <input type="text" id="ck_card_name" placeholder="AD SOYAD" style="text-transform:uppercase">
+                                </div>
+                                <div class="form-group">
+                                    <label>Kart Numarası *</label>
+                                    <input type="text" id="ck_card_num" class="input-card" placeholder="0000 0000 0000 0000" maxlength="19" oninput="formatCardNum(this)">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Son Kullanma Tarihi *</label>
+                                        <input type="text" id="ck_expiry" class="input-card" placeholder="AA / YY" maxlength="7" oninput="formatExpiry(this)">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>CVV *</label>
+                                        <input type="password" id="ck_cvv" class="input-card" placeholder="•••" maxlength="4">
+                                    </div>
+                                </div>
+                                <p class="security-note">🔒 256-bit SSL şifreleme ile güvenli ödeme (Demo amaçlı)</p>
+                            </div>
+                        </div>
+
+                        <!-- Sağ: Özet -->
+                        <div class="order-summary">
+                            <h3>// SİPARİŞ ÖZETİ</h3>
+                            <div id="orderItems"></div>
+                            <div class="order-total">
+                                <span>TOPLAM</span>
+                                <span id="orderTotal">0 ₺</span>
+                            </div>
+                            <button class="pay-btn" onclick="processPayment()">ÖDEMEYİ TAMAMLA →</button>
+                            <a href="cart.html" style="display:block;text-align:center;margin-top:1rem;font-size:0.85rem;color:var(--text-light);text-decoration:none;">← Sepete Dön</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Başarı mesajı -->
+                <div class="success-overlay" id="paySuccess">
+                    <div class="big-check">✅</div>
+                    <h2>ÖDEME BAŞARILI!</h2>
+                    <p>Siparişiniz alındı. Teşekkür ederiz!</p>
+                    <p style="color:var(--primary);font-family:'Orbitron',sans-serif;" id="successOrderNum"></p>
+                    <p style="margin-top:0.5rem;">Sipariş detayları e-posta adresinize gönderildi.</p>
+                    <div style="margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+                        <a href="shop.html" class="go-shop-btn" style="display:inline-block;padding:0.8rem 2rem;background:var(--primary);color:var(--bg);text-decoration:none;border-radius:8px;font-family:'Orbitron',sans-serif;font-size:0.85rem;font-weight:700;">MAĞAZAYA DÖN</a>
+                        <a href="../index.html" style="display:inline-block;padding:0.8rem 2rem;border:2px solid var(--border);color:var(--text);text-decoration:none;border-radius:8px;font-family:'Orbitron',sans-serif;font-size:0.85rem;">ANA SAYFA</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="../index.html" class="footer-logo" style="text-decoration:none;">E<span class="logo-dot">.</span></a>
+        <p class="footer-text">© 2026 Esma — Tüm hakları saklıdır</p>
+        <div class="footer-location"><span class="location-dot"></span><span>Kırşehir, TR</span></div>
+    </footer>
+
+    <script src="../assests/js/script.js"></script>
+    <script>
+    // Giriş kontrolü
+    const user = JSON.parse(localStorage.getItem('portfolioUser') || 'null');
+    if (!user) {
+        alert('Ödeme sayfasına erişmek için giriş yapmanız gerekmektedir.');
+        window.location.href = 'form.html';
+    } else {
+        document.getElementById('ck_name').value = user.username || '';
+        document.getElementById('ck_email').value = user.email || '';
+    }
+
+    function formatCardNum(el) {
+        let v = el.value.replace(/\D/g, '').substring(0, 16);
+        el.value = v.replace(/(.{4})/g, '$1 ').trim();
+    }
+    function formatExpiry(el) {
+        let v = el.value.replace(/\D/g, '').substring(0, 4);
+        if (v.length > 2) v = v.slice(0, 2) + ' / ' + v.slice(2);
+        el.value = v;
+    }
+
+    async function loadOrderSummary() {
+        const cartIds = JSON.parse(localStorage.getItem('shopCart') || '[]');
+        if (!cartIds.length) { window.location.href = 'cart.html'; return; }
+        const res = await fetch('../data/products.json');
+        const data = await res.json();
+        const products = data.products.filter(p => cartIds.includes(p.id));
+        const total = products.reduce((s, p) => s + p.price, 0);
+        document.getElementById('orderItems').innerHTML = products.map(p =>
+            `<div class="order-item"><span class="order-item-name">${p.name}</span><span class="order-item-price">${p.price.toLocaleString('tr-TR')} ₺</span></div>`
+        ).join('');
+        document.getElementById('orderTotal').textContent = total.toLocaleString('tr-TR') + ' ₺';
+    }
+
+    function processPayment() {
+        const name = document.getElementById('ck_name').value.trim();
+        const email = document.getElementById('ck_email').value.trim();
+        const cardName = document.getElementById('ck_card_name').value.trim();
+        const cardNum = document.getElementById('ck_card_num').value.replace(/\s/g,'');
+        const expiry = document.getElementById('ck_expiry').value.trim();
+        const cvv = document.getElementById('ck_cvv').value.trim();
+
+        if (!name || !email || !cardName || cardNum.length < 16 || expiry.length < 7 || cvv.length < 3) {
+            alert('Lütfen tüm zorunlu alanları eksiksiz doldurunuz.');
+            return;
+        }
+
+        // Demo ödeme simülasyonu
+        const btn = document.querySelector('.pay-btn');
+        btn.disabled = true;
+        btn.textContent = 'İŞLENİYOR...';
+
+        setTimeout(() => {
+            // Sepeti temizle
+            localStorage.setItem('shopCart', '[]');
+            updateCartBadge();
+
+            // Sipariş numarası
+            const orderNum = 'ESM-' + Date.now().toString().slice(-6);
+
+            // Sipariş geçmişine ekle
+            const orders = JSON.parse(localStorage.getItem('portfolioOrders') || '[]');
+            orders.push({ orderNum, date: new Date().toLocaleString('tr-TR'), email });
+            localStorage.setItem('portfolioOrders', JSON.stringify(orders));
+
+            document.getElementById('checkoutMain').style.display = 'none';
+            const s = document.getElementById('paySuccess');
+            s.classList.add('active');
+            document.getElementById('successOrderNum').textContent = 'Sipariş No: ' + orderNum;
+        }, 2000);
+    }
+
+    loadOrderSummary();
+    </script>
+</body>
+</html>
